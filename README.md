@@ -29,7 +29,7 @@ Comming soon
 
 # Requirements
 
-- Requires at least Java 8
+- At least Java 8
 
 # Grammar
 
