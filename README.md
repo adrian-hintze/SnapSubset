@@ -5,7 +5,7 @@ SnapSubset allows the user to easily create a functional program that consists o
 This is a WIP and much can still be done. If it gets worked on will depend on the success of 
 [Snapp*!*](https://github.com/Rydion/Snapp) and other projects that may use SnapSubset.
 
-SnapSubset works by modifying [Snap*!*](https://github.com/jmoenig/Snap--Build-Your-Own-Blocks)'s sourcecode, deleting part of it and rewriting 
+SnapSubset works by modifying [Snap*!*](https://github.com/jmoenig/Snap--Build-Your-Own-Blocks)'s source code, deleting part of it and rewriting 
 the remaining subset to keep it functional. Which parts get deleted is defined by the user
 using [info files](https://github.com/Rydion/SnapSubset#info-files).
 
