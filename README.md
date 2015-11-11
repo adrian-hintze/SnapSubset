@@ -7,7 +7,7 @@ This is a WIP and much can still be done. If it gets worked on will depend on th
 
 SnapSubset works by modifying Snap*!*'s sourcecode, deleting part of it and rewriting 
 the remaining subset to keep it functional. Which parts get deleted is defined by the user
-using [info files](https://github.com/Rydion/Snapp).
+using [info files](https://github.com/Rydion/SnapSubset#info-files).
 
 # Demo
 
