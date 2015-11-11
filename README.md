@@ -12,7 +12,7 @@ using [info files](https://github.com/Rydion/SnapSubset#info-files).
 # Demo
 
 SnapSubset comes with the .info files used to create the reduced version of Snap*!* 
-featured in [Snapp*!*](https://github.com/Rydion/Snapp).
+featured in Snapp*!*.
 
 Create an executable at (http://snapp.citilab.eu/)[http://snapp.citilab.eu/]
 using the **Presentation mode only** option to see what the end result looks like.
