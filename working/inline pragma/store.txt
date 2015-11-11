@@ -1,0 +1,40 @@
+SnapSerializer.prototype.rawLoadProjectModel
+
+	/*@{
+		var,
+		name : project,
+		class : Object,
+		properties :
+		{
+			{name : sprites, class : List, type : SpriteMorph},
+			{name : globalVariables, class : VariableFrame},
+			{name : stage, class : StageMorph}
+		}
+	}!*/
+	
+	/*@{
+		var,
+		name : model,
+		class : Object,
+		properties :
+		{
+			{name : project, class : XML_Element},
+			{name : notes, class : XML_Element},
+			{name : globalVariables, class : XML_Element},
+			{name : stage, class : XML_Element},
+			{name : hiddenPrimitives, class : XML_Element},
+			{name : codeHeaders, class : XML_Element},
+			{name : codeMappings, class : XML_Element},
+			{name : globalBlocks, class : XML_Element},
+			{name : stage, class : XML_Element},
+			{name : sprites, class : XML_Element}
+		}
+	}!*/
+
+SnapSerializer.prototype.loadScript
+
+	/*@{
+		var,
+		name : block,
+		class : {CommandBlockMorph, HatBlockMorph, RingMorph, ReporterBlockMorph}
+	}!*/

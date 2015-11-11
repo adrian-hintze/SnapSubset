@@ -1,0 +1,916 @@
+/**********************/
+/********BLOCKS********/
+/**********************/
+
+/*@ {passthrough} !*/
+
+
+/* SyntaxElementMorph */
+
+/*@
+{
+	var,
+	name : SyntaxElementMorph,
+	class : Function,
+	return : SyntaxElementMorph
+}
+!*/
+
+/*@
+{
+	name : SyntaxElementMorph,
+	class : Morph,
+	properties :
+	{
+		{name : constructor, class : Function, return: SyntaxElementMorph},
+		{name : uber, class : Morph},
+		{name : init, class : Function},
+		
+		{name : setScale, class : Function, parameters : {
+															{name : num, class : Number}
+													     }
+		},
+		
+		{name : scale, class : Number},
+		{name : corner, class : Number},
+		{name : rounding, class : Number},
+		{name : edge, class : Number},
+		{name : inset, class : Number},
+		{name : hatHeight, class : Number},
+		{name : hatWidth, class : Number},
+		{name : rfBorder, class : Number},
+		{name : minWidth, class : Number},
+		{name : dent, class : Number},
+		{name : bottomPadding, class : Number},
+		{name : cSlotPadding, class : Number},
+		{name : typeInPadding, class : Number},
+		{name : labelPadding, class : Number},
+		{name : labelFontName, class : String},
+		{name : labelFontStyle, class : String},
+		{name : fontSize, class : Number},
+		{name : embossing, class : Point},
+		{name : labelWidth, class : Number},
+		{name : labelWordWrap, class : Boolean},
+		{name : dynamicInputLabels, class : Boolean},
+		{name : feedbackColor, class : Color},
+		{name : feedbackMinHeight, class : Number},
+		{name : minSnapDistance, class : Number},
+		{name : reporterDropFeedbackPadding, class : Number},
+		{name : contrast, class : Number},
+		{name : labelContrast, class : Number},
+		{name : activeHighlight, class : Color},
+		{name : errorHighlight, class : Color},
+		{name : activeBlur, class : Number},
+		{name : activeBorder, class : Number},
+		{name : rfColor, class : Color},
+		
+		{name : partOfCustomCommand, class : Boolean},
+		{name : exitTag, class : Joker},
+		
+		{name : isCachingInputs, class : Boolean},
+		
+		{name : cachedClr, class : Color},
+		{name : cachedClrBright, class : Color},
+		{name : cachedClrDark, class : Color},
+		{name : isStatic, class : Boolean},
+		{name : defaults, class : Array, type : Joker},
+		{name : cachedInputs, class : {{class : Array, type : SyntaxElementMorph}} },
+		
+		{name : step, class : Function},
+		
+		{name : parts, class : Function, return : {{class : Array, type : Morph}} },
+		{name : inputs, class : Function, return : {{class : Array, type : {SyntaxElementMorph, MultiArgMorph}}} },
+		{name : allInputs, class : Function, return : {{class : Array, type : {ArgMorph, ReporterBlockMorph} }} },
+		{name : allEmptySlots, class : Function, return : {{class : Array, type : SyntaxElementMorph}} },
+		{name : tagExitBlocks, class : Function, parameters : {
+																{name : stopTag, class : Joker},
+																{name : isCommand, class : Boolean}
+															  }
+		},
+		{name : replaceInput, class : Function, return : null, parameters : {
+																				{name : oldArg, class : ArgLabelMorph},
+																				{name : newArg, class : ArgLabelMorph}
+																			}
+		},
+		{name : silentReplaceInput, class : Function, parameters : {
+																		{name : oldArg, class : ArgLabelMorph},
+																		{name : newArg, class : ArgLabelMorph}
+																   }
+		},
+		{name : revertToDefaultInput, class : Function, parameters : {
+																		{name : arg, class : ArgLabelMorph},
+																		{name : noValues, class : Boolean}
+																	 }
+		},
+		{name : isLocked, class : Function, return : Boolean},
+		{name : topBlock, class : Function, return : SyntaxElementMorph},
+		
+		{name : getVarNamesDict, class : Function, return : Object},
+		
+		{name : reactToGrabOf, class : Function, parameters : {
+																{name : grabbedMorph, class : CommandBlockMorph}
+															  }
+		},
+		
+		{name : bright, class : Function, return : String},
+		{name : dark, class : Function, return : String},
+		
+		{name : setColor, class : Function, parameters : {
+															{name : aColor, class : Color}
+														 }
+		},
+		{name : setLabelColor, class : Function, parameters : {
+																{name : textColor, class : Color},
+																{name : shadowColor, class : Color},
+																{name : shadowOffset, class : Point}
+															  }
+		},
+		
+		{name : fixBlockColor, class : Function, parameters : {
+																{name : nearestBlock, class : SyntaxElementMorph},
+																{name : isForced, class : Boolean}
+															  }
+		},
+		
+		{name : labelPart, class : Function, return : {
+														MultiArgMorph,
+														InputSlotMorph,
+														RingMorph,
+														Morph,
+														ReporterBlockMorph,
+														TextSlotMorph,
+														ArgMorph,
+														BooleanSlotMorph,
+														CommandSlotMorph,
+														RingCommandSlotMorph,
+														RingReporterSlotMorph,
+														CSlotMorph,
+														ColorSlotMorph,
+														TemplateSlotMorph,
+														FunctionSlotMorph,
+														SymbolMorph,
+														StringMorph
+													  },
+		 parameters : { {name : spec, class : String} }
+		},
+		{name : isObjInputFragment, class : Function, return : Boolean},
+		
+		{name : fixLayout, class : Function},
+		{name : fixHighlight, class : Function},
+		
+		{name : evaluate, class : Function, return : null},
+		{name : isEmptySlot, class : Function, return : false},
+		
+		{name : showBubble, class : Function, return : null, parameters : {
+																			{name : value, class : {ListWatcherMorph, Costume, Morph, Context, Boolean, String, Number} },
+																			{name : exportPic, class : Boolean}
+																		  }
+		},
+		{name : exportPictureWithResult, class : Function, parameters : {
+																			{name : aBubble, class : SpeechBubbleMorph}
+																		}
+		},
+		
+		{name : mappedCode, class : Function, return : {String, BlockMorph}, parameters : {
+																							{name : definitions, class : String}
+																						  }
+		},
+		
+		{name : startLayout, class : Function},
+		{name : endLayout, class : Function}
+	}
+}
+!*/
+
+/* \SyntaxElementMorph */
+
+
+
+/* BlockMorph */
+
+/*@
+{
+	var,
+	name : BlockMorph,
+	class : Function,
+	return : BlockMorph
+}
+!*/
+
+/*@
+{
+	name : BlockMorph,
+	class : SyntaxElementMorph,
+	properties :
+	{
+		{name : constructor, classs : Function, return : BlockMorph},
+		{name : uber, classs : SyntaxElementMorph},
+		{name : init, classs : Function},
+		
+		{name : isCachingInputs, class : Boolean},
+		{name : zebraContrast, class : Number},
+		
+		{name : snapSound, class : Audio},
+		{name : toggleSnapSound, class : Function},
+		
+		{name : selector, class : String},
+		{name : blockSpec, class : String},
+		{name : comment, class : CommentMorph},
+		{name : instantiationSpec, class : Joker},
+		{name : category, class : String},
+		
+		{name : receiver, class : Function, return : SyntaxElementMorph},
+		{name : toString, class : Function, return : String},
+		
+		{name : parseSpec, class : Function, return : {{class : Array, type : String}}, parameters : {
+																										{name : spec, class : String}
+																									}
+		},
+		{name : setSpec, class : Function, parameters : {
+															{name : spec, class : {{class : Array, type : String}}}
+														}
+		},
+		{name : buildSpec, class : Function},
+		{name : rebuild, class : Function, parameters : {
+															{name : contrast, class : Number}
+														}
+		},
+		
+		{name : userMenu, class : Function, return : MenuMorph},
+		{name : developersMenu, class : Function, return : MenuMorph},
+		{name : hidePrimitive, class : Function},
+		{name : deleteBlock, class : Function},
+		{name : ringify, class : Function},
+		{name : unringify, class : Function},
+		{name : relabel, class : Function, parameters : {
+															{name : alternativeSelectors, class : Joker}
+														}
+		},
+		{name : setSelector, class : Function, parameters : {
+																{name : aSelector, class : Joker}
+															}
+		},
+		{name : restoreInputs, class : Function, parameters : {
+																{name : oldInputs, class : {{class : {ReporterBlockMorph, CSlotMorph} }} }
+															  }
+		},
+		{name : showHelp, class : Function},
+		
+		{name : mapToHeader, class : Function},
+		{name : mapToCode, class : Function},
+		{name : mapHeader, class : Function, parameters : {
+															{name : aString, class : String},
+															{name : key, class : String}
+														  }
+		},
+		{name : mapCode, class : Function, parameters : {
+															{name : aString, class : String},
+															{name : key, class : String}
+														}
+		},
+		{name : mappedCode, class : Function, return : String, parameters : {
+																				{name : definitions, class : Object}
+																			}
+		},
+		{name : codeDefinitionHeader, class : Function, return : HatBlockMorph},
+		{name : codeMappingHeader, class : Function, return : HatBlockMorph},
+		
+		{name : eraseHoles, class : Function, return : String, parameters : {
+																				{name : context, class : CanvasRenderingContext2D}
+																			}
+		},
+		
+		{name : addHighlight, class : Function, return : BlockHighlightMorph, parameters : {
+																								{name : oldHighlight, class : BlockHighlightMorph}
+																						   }
+		},
+		{name : addErrorHighlight, class : Function, return : BlockHighlightMorph},
+		{name : removeHighlight, class : Function, return : BlockHighlightMorph},
+		{name : toggleHighlight, class : Function},
+		{name : highlight, class : Function, return : BlockHighlightMorph, parameters : {
+																							{name : color, class : Color},
+																							{name : blur, class : Number},
+																							{name : border, class : Number}
+																						}
+		},
+		{name : highlightImage, class : Function, return : HTMLCanvasElement, parameters : {
+																					{name : color, class : Color},
+																					{name : border, class : Number}
+																				}
+		},
+		{name : highlightImageBlurred, class : Function, return : HTMLCanvasElement, parameters : {
+																							{name : color, class : Color},
+																							{name : blur, class : Number}
+																					   }
+		},
+		{name : getHighlight, class : Function, return : BlockHighlightMorph},
+		{name : outline, class : Function, return : BlockHighlightMorph, parameters : {
+																						{name : color, class : Color},
+																						{name : border, class : Number}
+																					  }
+		},
+		
+		{name : fixBlockColor, class : Function, parameters : {
+																	{name : nearestBlock, class : Joker},
+																	{name : isForced, class : Boolean}
+															  }
+		},
+		{name : forceNormalColoring, class : Function},
+		{name : alternateBlockColor, class : Function},
+		{name : ghost, class : Function},
+		{name : fixLabelColor, class : Function},
+		{name : fixChildrensBlockColor, class : Function, parameters : {
+																		{name : isForced, class : Boolean}
+																	   }
+		},
+		{name : setCategory, class : Function, parameters : {
+																{name : aString, class : String}
+															}
+		},
+		
+		{name : fullCopy, class : Function, return : BlockMorph},
+		{name : reactToTemplateCopy, class : Function},
+		
+		{name : mouseClickLeft, class : Function},
+		{name : focus, class : Function},
+		{name : activeProcess, class : Joker},
+		
+		{name : thumbnail, class : Function, return : HTMLCanvasElement, parameters : {
+																			{name : scale, class : Number},
+																			{name : clipWidth, class : Boolean}
+																		   }
+		},
+		
+		{name : rootForGrab, class : Function, return : BlockMorph},
+		{name : reactToTemplateCopy, class : Function},
+		{name : reactToTemplateCopy, class : Function}
+	}
+	
+}
+!*/
+
+/* \BlockMorph */
+
+
+
+/* CommandBlockMorph */
+
+/*@
+{
+	var,
+	name : CommandBlockMorph,
+	class : Function,
+	return : CommandBlockMorph
+}
+!*/
+
+/*@
+{
+	name : CommandBlockMorph,
+	class : BlockMorph,
+	properties :
+	{
+		{name : constructor, class : Function, return : CommandBlockMorph},
+		{name : uber, class : BlockMorph},
+		{name : init, class : Function},
+		
+		{name : blockSequence, class : Function, return : {{class : Array, type: CommandBlockMorph}} },
+		{name : bottomBlock, class : Function, return : CommandBlockMorph},
+		{name : nextBlock, class : Function, return : CommandBlockMorph, parameters : {
+																						{name : block, class : CommandBlockMorph}
+																					  }
+		},
+		
+		{name : topAttachPoint, class : Function, return : Point},
+		{name : bottomAttachPoint, class : Function, return : Point},
+		{name : dentLeft, class : Function, return : Number},
+		{name : dentCenter, class : Function, return : Number},
+		{name : attachTargets, class : Function, return : {{class : Array, type : {{class : Object, properties : {{
+																													{name : point, class : Point},
+																													{name : point, class : CommandBlockMorph},
+																													{name : point, class : String},
+																													{name : point, class : String},
+														  }} }} }}
+		},
+		{name : allAttachTargets, class : Function, return : {{class : Array, type : {{class : Object, properties : {{
+																													{name : point, class : Point},
+																													{name : point, class : CommandBlockMorph},
+																													{name : point, class : String},
+																													{name : point, class : String},
+														  }} }} }}, parameters : {
+																					{name : newParent, class : CommandBlockMorph}
+																				 }
+		},
+		{name : closestAttachTarget, class : Function, return : {{class : Array, type : {{class : Object, properties : {{
+																													{name : point, class : Point},
+																													{name : point, class : CommandBlockMorph},
+																													{name : point, class : String},
+																													{name : point, class : String},
+														  }} }} }}, parameters : {
+																					{name : newParent, class : CommandBlockMorph}
+																				 }
+		},
+		{name : snap, class : Function},
+		{name : isStop, class : Function, return : Boolean},
+		
+		{name : userDestroy, class : Function},
+		{name : userDestroyJustThis, class : Function},
+		
+		{name : drawNew, class : Function},
+		{name : drawBody, class : Function, parameters : {
+															{name : context, class : CanvasRenderingContext2D}
+														 }
+		},
+		{name : drawTop, class : Function, parameters : {
+															{name : context, class : CanvasRenderingContext2D}
+														}
+		},
+		{name : drawBottom, class : Function, parameters : {
+																{name : context, class : CanvasRenderingContext2D}
+														   }
+		},
+		{name : drawDent, class : Function, parameters : {
+															{name : context, class : CanvasRenderingContext2D},
+															{name : x, class : Number},
+															{name : y, class : Number}
+														 }
+		},
+		{name : drawTopDentEdge, class : Function, parameters : {
+																	{name : context, class : CanvasRenderingContext2D},
+																	{name : x, class : Number},
+																	{name : y, class : Number}
+																}
+		},
+		{name : drawBottomDentEdge, class : Function, parameters : {
+																		{name : context, class : CanvasRenderingContext2D},
+																		{name : x, class : Number},
+																		{name : y, class : Number}
+																   }
+		},
+		{name : drawFlatBottomDentEdge, class : Function, parameters : {
+																			{name : context, class : CanvasRenderingContext2D}
+																	   }
+		},
+		{name : drawLeftEdge, class : Function, parameters : {
+																{name : context, class : CanvasRenderingContext2D}
+															 }
+		},
+		{name : drawRightEdge, class : Function, parameters : {
+																{name : context, class : CanvasRenderingContext2D}
+															  }
+		},
+		{name : drawTopLeftEdge, class : Function, parameters : {
+																	{name : context, class : CanvasRenderingContext2D}
+															    }
+		},
+		{name : drawBottomRightEdge, class : Function, parameters : {
+																		{name : context, class : CanvasRenderingContext2D}
+																	}
+		}
+	}
+}
+!*/
+
+/* \CommandBlockMorph */
+
+
+
+/**** HatBlockMorph */
+
+/*@
+{
+	var,
+	name : HatBlockMorph,
+	class : Function,
+	return : HatBlockMorph
+}
+!*/
+
+/*@
+{
+	name : HatBlockMorph,
+	class : CommandBlockMorph
+}
+!*/
+
+/**** \HatBlockMorph*/
+
+
+
+/* ReporterBlockMorph */
+
+/*@
+{
+	var,
+	name : ReporterBlockMorph,
+	class : Function,
+	return : ReporterBlockMorph,
+	parameters :
+	{
+		{name : isPredicate, class : Boolean}
+	}
+}
+!*/
+
+/*@
+{
+	name : ReporterBlockMorph,
+	class : BlockMorph,
+	properties : 
+	{
+		{name : constructor, class : Function, return : ReporterBlockMorph},
+		{name : uber, class : BlockMorph},
+		{name : init, class : Function, parameters : {
+														{name : isPredicate, class : Boolean}
+													 }
+		},
+		
+		{name : isPredicate, class : Boolean},
+		
+		{name : snap, class : Function, return : null, parameters : {
+																		{name : hand, class : HandMorph}
+																	}
+		},
+		{name : prepareToBeGrabbed, class : Function, return : null, parameters : {
+																					{name : handMorph, class : HandMorph}
+																				  }
+		},
+		
+		{name : blockSequence, class : Function, return : ReporterBlockMorph},
+		
+		{name : isUnevaluated, class : Function, return : Boolean},
+		{name : isLocked, class : Function, return : Boolean},
+		{name : getSlotSpec, class : Function, return : String},
+		{name : mouseClickLeft, class : Function, return : Joker, parameters : {
+																				{name : handMorph, class : HandMorph}
+																			   }
+		},
+		{name : ExportResultPic, class : Function},
+		{name : userDestroy, class : Function},
+		{name : drawNew, class : Function},
+		{name : drawRounded, class : Function, parameters : {
+																{name : context, class : CanvasRenderingContext2D}
+															}
+		},
+		{name : drawDiamond, class : Function, parameters : {
+																{name : context, class : CanvasRenderingContext2D}
+															}
+		}
+	}
+}
+!*/
+
+/* \ReporterBlockMorph */
+
+
+
+/* RingMorph */
+
+/*@
+{
+	var,
+	name : RingMorph,
+	class : Function,
+	return : RingMorph
+}
+!*/
+
+/*@
+{
+	name : RingMorph,
+	class : ReporterBlockMorph,
+	properties :
+	{
+		{name : constructor, class : Function, return : RingMorph},
+		{name : uber, class : ReporterBlockMorph},
+		{name : init, class : Function},
+		
+		{name : edge, class : Number},
+		{name : rounding, class : Number},
+		{name : alpha, class : Number},
+		{name : contrast, class : Number},
+		
+		{name : contents, class : Function, return : {ReporterBlockMorph, CommandBlockMorph} },
+		{name : inputNames, class : Function, return : Joker},
+		{name : dataType, class : Function, return : String}
+	}
+}
+!*/
+
+/* \RingMorph */
+
+
+
+/* ScriptsMorph */
+
+/*@
+{
+	var,
+	name : ScriptsMorph,
+	class : Function,
+	return : ScriptsMorph,
+	parameters : {
+					{name : owner, class : SpriteMorph}
+				 }
+}
+!*/
+
+/*@
+{
+	name : ScriptsMorph,
+	class : FrameMorph,
+	properties :
+	{
+		{name : owner, class : SpriteMorph}
+	}
+}
+!*/
+
+/* \ScriptsMorph */
+
+
+
+/* ArgMorph */
+
+/*@
+{
+	var,
+	name : ArgMorph,
+	class : Function,
+	return : ArgMorph,
+	parameters : {
+					{name : type, class : String}
+				 }
+}
+!*/
+
+/*@
+{
+	name : ArgMorph,
+	class : SyntaxElementMorph,
+	properties : 
+	{
+		{name : constructor, class : Function, return : ArgMorph},
+		{name : uber, class : SyntaxElementMorph},
+		{name : init, class : Function, parameters : {
+														{name : type, class : String}
+													 }
+		},
+		
+		{name : type, class : String},
+		{name : isHole, class : Boolean},
+		
+		{name : getSpec, class : Function, return : String},
+		{name : isEmptySlot, class : Function, return : Boolean}
+	}
+}
+!*/
+
+/* \ArgMorph */
+
+
+
+/* InputSlotMorph */
+
+/*@
+{
+	var,
+	name : InputSlotMorph,
+	class : Function,
+	return : InputSlotMorph
+}
+!*/
+
+/*@
+{
+	name : InputSlotMorph,
+	class : ArgMorph,
+	properties : 
+	{
+		{name : constructor, class : Function, return : InputSlotMorph},
+		{name : uber, class : ArgMorph},
+		{name : init, class : Function}
+	}
+}
+!*/
+
+/* \InputSlotMorph */
+
+
+
+/* ArrowMorph */
+
+/*@
+{
+	var,
+	name : ArrowMorph,
+	class : Function,
+	return : ArrowMorph,
+	parameters :
+	{
+		{name : direction, class : String},
+		{name : size, class : Number},
+		{name : padding, class : Number},
+		{name : color, class : Color}
+	}
+}
+!*/
+
+/*@
+{
+	name : ArrowMorph,
+	class : Morph,
+	properties :
+	{
+		{name : constructor, class : Function, return : ArrowMorph},
+		{name : uber, class : Morph},
+		{name : init, class : Function, parameters : {
+														{name : direction, class : String},
+														{name : size, class : Number},
+														{name : padding, class : Number},
+														{name : color, class : Color}
+													 }
+		},
+		
+		{name : direction, class : String},
+		{name : size, class : Number},
+		{name : padding, class : Number},
+		
+		{name : setSize, class : Function, parameters : {
+															{name : size, class : Number}
+														}
+		},
+		
+		{name : drawNew, class : Function},
+		{name : mouseClickLeft, class : Function}
+		
+	}
+}
+!*/
+
+/* \ArrowMorph */
+
+
+
+/* BlockHighlightMorph */
+
+//unnecessary
+
+/* \BlockHighlightMorph */
+
+
+
+/* MultiArgMorph */
+
+/*@
+{
+	var,
+	name : MultiArgMorph,
+	class : Function,
+	return : MultiArgMorph,
+	parameters :
+	{
+		{name : slotSpec, class : String},
+		{name : labelTxt, class : String},
+		{name : min, class : Number},
+		{name : eSpec, class : Joker},
+		{name : arrowColor, class : Color},
+		{name : labelColor, class : Color},
+		{name : shadowColor, class : Color},
+		{name : shadowOffset, class : Point},
+		{name : isTransparent, class : Boolean}
+	}
+}
+!*/
+
+/*@
+{
+	name : MultiArgMorph,
+	class : ArgMorph,
+	properties :
+	{
+		{name : constructor, class : Function, return : MultiArgMorph},
+		{name : uber, class : ArgMorph},
+		{name : init, class : Function, parameters : {
+														{name : slotSpec, class : String},
+														{name : labelTxt, class : String},
+														{name : min, class : Number},
+														{name : eSpec, class : Joker},
+														{name : arrowColor, class : Color},
+														{name : labelColor, class : Color},
+														{name : shadowColor, class : Color},
+														{name : shadowOffset, class : Point},
+														{name : isTransparent, class : Boolean}
+													 }
+		},	
+		
+		{name : slotSpec, class : String},
+		{name : labelTxt, class : String},
+		{name : minInputs, class : Number},
+		{name : elementSpec, class : Joker},
+		{name : labelColor, class : Color},
+		{name : shadowColor, class : Color},
+		{name : shadowOffset, class : Point},
+		
+		{name : label, class : Function, return : StringMorph},
+		{name : arrows, class : Function, return : FrameMorph},
+		{name : getSpec, class : Function, return : String},
+		{name : setContents, class : Function, parameters : {
+																{name : anArray, class : Array, type : Joker}
+															}
+		},
+		{name : hide, class : Function},
+		{name : show, class : Function},
+		
+		{name : fixLayout, class : Function},
+		
+		{name : addInput, class : Function, parameters : {
+															{name : contents, class : Array, type : Joker}
+														 }
+		},
+		{name : removeInput, class : Function},
+		
+	}
+}
+!*/
+
+/* \MultiArgMorph */
+
+
+
+/* ArgLabelMorph */
+
+/*@
+{
+	var,
+	name : ArgLabelMorph,
+	class : Function,
+	return : ArgLabelMorph,
+	parameters :
+	{
+		{name : argMorph, class : ArgMorph},
+		{name : labelTxt, class : String}
+	}
+}
+!*/
+
+/*@
+{
+	name : ArgLabelMorph,
+	class : ArgMorph,
+	properties :
+	{
+		{name : constructor, class : Function, return : ArgLabelMorph},
+		{name : uber, class : ArgMorph},
+		{name : init, class : Function, parameters : {
+														{name : argMorph, class : ArgMorph},
+														{name : labelTxt, class : String}
+													 }
+		},	
+		
+		{name : argMorph, class : ArgMorph},
+		{name : labelTxt, class : String},
+		
+		{name : label, class : Function, return : Joker},
+		{name : argMorph, class : Function, return : ArgMorph},
+		
+		{name : fixLayout, class : Function},
+		{name : refresh, class : Function},
+		{name : drawNew, class : Function},
+		
+		{name : setLabelColor, class : Function, parameters : {
+																{name : textColor, class : Color},
+																{name : shadowColor, class : Color},
+																{name : shadowColor, class : Point}
+															  }
+		},
+		{name : reactToGrabOf, class : Function},
+		{name : evaluate, class : Function, return : Joker},
+		{name : isEmptySlot, class : Function, return : Boolean}
+	}
+}
+!*/
+
+/* \ArgLabelMorph */
+
+
+
+/* SymbolMorph */
+
+/*@
+{
+	var,
+	name : aa,
+	class : Function,
+	return : SymbolMorph
+}
+!*/
+
+/*@
+{
+	name : SymbolMorph,
+	class : Object
+}
+!*/
+
+/* \SymbolMorph */

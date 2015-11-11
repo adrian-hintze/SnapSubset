@@ -1,0 +1,7 @@
+ListWatcherMorph.prototype.arrangeCells
+
+	/*@{
+		var,
+		name : lastCell,
+		class : CellMorph
+	}!*/

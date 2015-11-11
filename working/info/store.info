@@ -1,0 +1,183 @@
+/**********************/
+/********STORE*********/
+/**********************/
+
+/* XML_Serializer */
+
+/*@
+{
+	var,
+	name : XML_Serializer,
+	class : Function,
+	return : XML_Serializer
+}
+!*/
+
+/*@
+{
+	name : XML_Serializer,
+	class : Object,
+	properties : 
+	{
+		{name : contents, class : Array, type : Object},
+		{name : media, class : Array, type : Object},
+		{name : isCollectingMedia, class : Boolean},
+		
+		{name : idProperty, class : String},
+		{name : mediaIdProperty, class : String},
+		{name : mediaDetectionProperty, class : String},
+		{name : version, class : Number},
+		
+		{name : load, class : Function, parameters : {{name : xmlString, class : String}} },
+		{name : parse, class : Function, return : XML_Element, parameters : {{name : xmlString, class : String}} }
+	}
+}
+!*/
+
+/* \XML_Serializer */
+
+
+/* SnapSerializer */
+
+/*@
+{
+	var,
+	name : SnapSerializer,
+	class : Function,
+	return : SnapSerializer
+}
+!*/
+
+/*@
+{
+	name : SnapSerializer,
+	class : XML_Serializer,
+	properties :
+	{
+		{name : constructor, class : Function, return : SnapSerializer},
+		{name : uber, class : XML_Serializer},
+	
+		{name : watcherLabels, class : Object},
+		{name : init, class : Function},
+		
+		{name : project, class : Object, properties : {
+														{name : sprites, class : Array, type : SpriteMorph},
+														{name : name, class : String},
+														{name : notes, class : String},
+														{name : globalVariables, class : VariableFrame},
+														{name : stage, class : StageMorph}
+													  }
+		},
+		{name : objects, class : Object},
+		{name : mediaDict, class : Object},
+		
+		{name : load, class : Function, return : Object, parameters : {
+																		{name : xmlString, class : String},
+																		{name : ide, class : IDE_Morph}
+																	  }
+		},
+		{name : loadProjectModel, class : Function, return : Object, parameters : {
+																					{name : xmlNode, class : XML_Element},
+																					{name : ide, class : IDE_Morph}
+																				  }
+		},
+		{name : rawLoadProjectModel, class : Function, return : Object, parameters : {
+																						{name : xmlNode, class : XML_Element}
+																					 }
+		},
+		{name : loadObject, class : Function, parameters : {
+																{name : object, class : StageMorph},
+																{name : model, class : XML_Element}
+														   }
+		},
+		{name : loadNestingInfo, class : Function, parameters : {
+																	{name : object, class : {StageMorph, SpriteMorph}},
+																	{name : model, class : XML_Element}
+																}
+		},
+		{name : loadCostumes, class : Function, parameters : {
+																{name : object, class : StageMorph},
+																{name : model, class : XML_Element}
+														     }
+		},
+		{name : loadSounds, class : Function, parameters : {
+																{name : object, class : StageMorph},
+																{name : model, class : XML_Element}
+														   }
+		},
+		{name : loadCustomBlocks, class : Function, parameters : {
+															{name : object, class : StageMorph},
+															{name : element, class : XML_Element},
+															{name : isGlobal, class : Boolean}
+														  }
+		},
+		{name : populateCustomBlocks, class : Function, parameters : {
+																		{name : object, class : StageMorph},
+																		{name : element, class : XML_Element},
+																		{name : isGlobal, class : Boolean}
+																	 }
+		},
+		{name : loadScripts, class : Function, parameters : {
+																{name : scripts, class : ScriptsMorph},
+																{name : model, class : XML_Element}
+															}
+		},
+		{name : loadScriptsArray, class : Function, 
+		 return : {{class : List, type {CommandBlockMorph, HatBlockMorph, RingMorph, ReporterBlockMorph}}},
+		 parameters : {
+						{name : model, class : XML_Element}
+					  }
+		},
+		{name : loadScript, class : Function,
+		 return : {CommandBlockMorph, HatBlockMorph, RingMorph, ReporterBlockMorph},
+		 parameters : {
+						{name : model, class : XML_Element}
+					  }
+		},
+		{name : loadBlock, class : Function, 
+		 return : {CommandBlockMorph, HatBlockMorph, RingMorph, ReporterBlockMorph},
+		 parameters : {
+						{name : model, class : XML_Element},
+						{name : isReporter, class : Boolean}
+					  }
+		},
+		{name : obsoleteBlock, class : Function, return : {CommandBlockMorph, ReporterBlockMorph}, parameters : {
+																													{name : isReporter, class : Boolean}
+																												}
+		},
+		{name : loadVariables, class : Function, parameters : {
+																{name : varFrame, class : VariableFrame},
+																{name : element, class : XML_Element}
+															  }
+		},
+		{name : loadInput, class : Function, return : Object, parameters : {
+																				{name : model, class : XML_Element},
+																				{name : input, class : MultiArgMorph},
+																				{name : block, class : {CommandBlockMorph, HatBlockMorph, RingMorph, ReporterBlockMorph}}
+																		   }
+		},
+		{name : loadValue, class : Function, return : undefined, parameters : {
+																				{name : model, class : XML_Element}
+																		      }
+		},
+		{name : loadColor, class : Function, return : Color, parameters : {
+																			{name : colorString, class : String}
+																	      }
+		},
+		{name : openProject, class : Function, parameters : {
+																{name : project, class : Object, properties : {
+																												{name : name, class : String},
+																												{name : notes, class : String},
+																												{name : globalVariables, class : VariableFrame},
+																												{name : stage, class : StageMorph}
+																											  }
+																},
+																{name : ide, class : IDE_Morph}
+															}
+		}
+	}
+}
+!*/
+
+/* \SnapSerializer */
+
