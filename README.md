@@ -6,7 +6,7 @@ This is a WIP and much can still be done. If it gets worked on will depend on th
 [Snapp*!*](https://github.com/Rydion/Snapp) and other projects that may use SnapSubset.
 
 SnapSubset works by modifying [Snap*!*](https://github.com/jmoenig/Snap--Build-Your-Own-Blocks)'s source code, deleting part of it and rewriting 
-the remaining subset to keep it functional. Which parts get deleted is defined by the user
+the remaining subset to keep it functional. The deleted parts are defined by the user
 using [info files](https://github.com/Rydion/SnapSubset#info-files).
 
 # Demo
