@@ -1,0 +1,438 @@
+/***********************/
+/*********TABLES********/
+/***********************/
+
+/* Table */
+
+/*@{
+	var,
+	name: Table,
+	class: Function,
+	return: Table,
+	parameters: {
+		{name: cols, class: Number},
+		{name: rows, class: Number}
+	}
+}!*/
+
+/*@{
+	name: Table,
+	class: Object,
+	properties: {
+		{name: colCount, class: Number},
+		{name: rowCount, class: Number},
+		{name: colNames, class: Array, type: String},
+		{name: rowNames, class: Array, type: String},
+		{name: contents, class: Array, type: {{class: Array, type: Joker}} },
+		{name: lastChanged, class: Date},
+		
+		{name: changed, class: Function},
+		{name: get, class: Function, return: Joker, parameters: {
+																	{name: col, class: Number},
+																	{name: row, class: Number}
+																}
+		},
+		{name: row, class: Function, return: {{class: Array, type: Joker}}, parameters: {{name: row, class: Number}} },
+		{name: col, class: Function, return: {{class: Array, type: Joker}}, parameters: {{name: col, class: Number}} },
+		{name: colName, class: Function, return: String, parameters: {{name: col, class: Number}} },
+		{name: rowName, class: Function, return: String, parameters: {{name: row, class: Number}} },
+		{name: rows, class: Function, return: Number},
+		{name: cols, class: Function, return: Number},
+		{name: columnNames, class: Function, return: {{class: Array, type: String}} },
+		
+		{name: set, class: Function, parameters: {
+													{name: data, class: Joker},
+													{name: col, class: Number},
+													{name: row, class: Number}
+												 }
+		
+		},
+		{name: setRows, class: Function, parameters: {
+														{name: rowsArray, class: Array, type: {{class: Array, type: Joker}} },
+														{name: colNames, class: Array, type: String},
+														{name: rowNames, class: Array, type: String}
+													 }
+		
+		},
+		{name: setCols, class: Function, parameters: {
+														{name: colsArray, class: Array, type: {{class: Array, type: Joker}} },
+														{name: colNames, class: Array, type: String},
+														{name: rowNames, class: Array, type: String}
+													 }
+		
+		},
+		{name: setColNames, class: Function, parameters: {
+															{name: array, class: Array, type: String}
+														 }
+		
+		},
+		{name: setRowNames, class: Function, parameters: {
+															{name: array, class: Array, type: String}
+														 }
+		
+		},
+		{name: setColName, class: Function, parameters: {
+															{name: col, class: Number},
+															{name: name, class: String}
+														}
+		
+		},
+		{name: setRowName, class: Function, parameters: {
+															{name: row, class: Number},
+															{name: name, class: String}
+														}
+		
+		},
+		
+		{name: addRow, class: Function, parameters: {
+														{name: array, class: Array, type: Joker},
+														{name: name, class: String}
+													}
+		
+		},
+		{name: addCol, class: Function, parameters: {
+														{name: array, class: Array, type: Joker},
+														{name: name, class: String}
+													}
+		
+		},
+		{name: toList, class: Function, return: List}
+	}
+}!*/
+
+/* \Table */
+
+
+
+/* aux TableCellMorphData */
+
+/*@{
+	name: TableCellMorphData,
+	class: {Morph, String, Number, Boolean, Array, Variable, Context, Costume, List},
+	properties: {
+		{name: toString, class: Function, return: String}
+	}
+}!*/
+	
+/* \aux TableCellMorphData */
+
+/* TableCellMorph */
+
+/*@{
+	var,
+	name: TableCellMorph,
+	class: Function,
+	return: TableCellMorph,
+	parameters: {
+		{name: data, class: TableCellMorphData},
+		{name: extent, class: Point},
+		{name: isLabel, class: Boolean}
+	}
+}!*/
+
+/*@{
+	name: TableCellMorph,
+	class: Morph,
+	properties: {
+		{name: parentThatIsA, class: Function, return: TableMorph},
+	
+		{name : constructor, class : Function, return: TableCellMorph},
+		{name : uber, class : Morph},
+		
+		{name: listSymbol, class: Function, return: HTMLCanvasElement},
+		
+		{name : init, class : Function, parameters: {
+														{name: data, class: TableCellMorphData},
+														{name: extent, class: Point},
+														{name: isLabel, class: Boolean}
+													}
+		},
+	
+		{name: data, class: TableCellMorphData},
+		{name: isLabel, class: Boolean},
+		
+		{name: setData, class: Function, parameters: {
+														{name: data, class: TableCellMorphData},
+														{name: extent, class: Point}
+													 }
+		
+		},
+		{name: getData, class: Function, return: TableCellMorphData},
+		{name: drawNew, class: Function},
+		{name: drawData, class: Function, parameters: {
+														{name: lbl, class: {HTMLCanvasElement, String}},
+														{name: bg, class: String}
+													  }
+		
+		},
+		{name: dataRepresentation, class: Function, parameters: {
+																	{name: dta, class: TableCellMorphData}
+																}
+		
+		},
+		{name: raggedBoxPath, class: Function, parameters: {
+															{name: context, class: CanvasRenderingContext2D}
+														   }
+		},
+		{name: shouldBeList, class: Function, return: Boolean},
+		{name: isOvershooting, class: Function, return: Boolean},
+		
+		{name: mouseDoubleClick, class: Function, parameters: {
+																{name: pos, class: Point}
+															}
+		},
+		{name: mouseEnter, class: Function},
+		{name: mouseLeave, class: Function}
+	}
+}!*/
+
+/* \TableCellMorph */
+
+
+
+/* TableMorph */
+
+/*@{
+	var,
+	name: TableMorph,
+	class: Function,
+	return: TableMorph,
+	parameters: {
+		{name: table, class: {Table, List} },
+		{name: scrollBarSize, class: Number},
+		{name: extent, class: Point},
+		{name: startRow, class: Number},
+		{name: startCol, class: Number},
+		{name: globalColWidth, class: Number},
+		{name: colWidths, class: Array, type: Number},
+		{name: rowHeight, class: Number},
+		{name: colLabelHeight, class: Number},
+		{name: padding, class: Number}
+	}
+}!*/
+
+/*@{
+	name: TableMorph,
+	class: FrameMorph,
+	properties: {
+		{name: children, class: Array, type: TableCellMorph},
+		{name: parentThatIsAnyOf, class: Function, return: {SpriteBubbleMorph, SpeechBubbleMorph, CellMorph} },
+	
+		{name: constructor, class: Function, return: TableMorph},
+		{name: uber, class: FrameMorph},
+		
+		{name: highContrast, class: Boolean},
+		
+		{name: init, class: Function, parameters: {
+													{name: table, class: {Table, List} },
+													{name: scrollBarSize, class: Number},
+													{name: extent, class: Point},
+													{name: startRow, class: Number},
+													{name: startCol, class: Number},
+													{name: globalColWidth, class: Number},
+													{name: colWidths, class: Array, type: Number},
+													{name: rowHeight, class: Number},
+													{name: colLabelHeight, class: Number},
+													{name: padding, class: Number}
+												  }
+		},
+		
+		{name: table, class: {Table, List} },
+		{name: scrollBarSize, class: Number},
+		{name: startRow, class: Number},
+		{name: startCol, class: Number},
+		{name: textHeight, class: Number},
+		{name: rowHeight, class: Number},
+		{name: colWidths, class: Array, type: Number},
+		{name: globalColWidth, class: Number},
+		{name: colLabelHeight, class: Number},
+		{name: padding, class: Number},
+		{name: tableVersion, class: Date},
+		
+		{name: hBar, class: SliderMorph},
+		{name: vBar, class: SliderMorph},
+		{name: rowLabelWidth, class: Number},
+		{name: columns, class: Array, type: Number},
+		{name: rows, class: Number},
+		{name: maxStartRow, class: Joker},
+		{name: maxStartCol, class: Joker},
+		{name: dragAnchor, class: Joker},
+		{name: resizeAnchor, class: Joker},
+		{name: resizeCol, class: Joker},
+		{name: resizeRow, class: Joker},
+		{name: wantsUpdate, class: Boolean},
+		
+		{name: initScrollBars, class: Function},
+		{name: updateScrollBars, class: Function},
+		{name: drawNew, class: Function},
+		{name: buildCells, class: Function},
+		{name: drawData, class: Function, parameters: {
+														{name: noScrollUpdate, class: Boolean}
+													  }
+		},
+		{name: scroll, class: Function, parameters: {
+														{name: xSteps, class: Number},
+														{name: ySteps, class: Number}
+													}
+		},
+		{name: showData, class: Function, parameters: {
+														{name: startCol, class: Number},
+														{name: startRow, class: Number},
+														{name: noScrollUpdate, class: Boolean}
+													  }
+		},
+		
+		{name: step, class: Function},
+		{name: update, class: Function},
+		
+		{name: rowLabelsWidth, class: Function, return: Number},
+		{name: columnsLayout, class: Function, return: {{class: Array, type: Number}} },
+		
+		{name: colWidth, class: Function, return: Number, parameters: {
+																		{name: col, class: Number}
+																	  }
+		},
+		{name: visibleRows, class: Function, return: Number},
+		{name: globalExtent, class: Function, return: Point},
+		{name: mouseScroll, class: Function, parameters: {
+															{name: y, class: Number},
+															{name: x, class: Number}
+														 }
+		},
+		{name: mouseDownLeft, class: Function, parameters: {
+															{name: pos, class: Point}
+														   }
+		},
+		{name: mouseClickLeft, class: Function, parameters: {
+																{name: pos, class: Point}
+															}
+		},
+		{name: mouseLeaveDragging, class: Function, parameters: {
+																	{name: pos, class: Point}
+																}
+		},
+		{name: mouseDoubleClick, class: Function, parameters: {
+																{name: pos, class: Point}
+															  }
+		},
+		{name: shiftCells, class: Function, parameters: {
+															{name: pos, class: Number}
+														}
+		},
+		{name: resizeCells, class: Function, parameters: {
+															{name: pos, class: Number}
+														 }
+		},
+		{name: columnAt, class: Function, return: Number, parameters: {
+																		{name: relativeX, class: Number}
+																	  }
+		},
+		{name: resetColumns, class: Function},
+		{name: openInDialog, class: Function},
+		{name: showListView, class: Function},
+		{name: show, class: Function}
+	}
+}!*/
+
+/* \TableMorph */
+
+
+
+/* TableFrameMorph */
+
+/*@{
+	var,
+	name: TableFrameMorph,
+	class: Function,
+	return: TableFrameMorph,
+	parameters: {
+		{name: tableMorph, class: TableMorph},
+		{name: noResize, class: Boolean}
+	}
+}!*/
+
+/*@{
+	name : TableFrameMorph,
+	class : Morph,
+	properties: {
+		{name: parent, class: Object, properties: {{name: fixLayout, class: Function}} },
+	
+		{name: constructor, class: Function, return: TableFrameMorph},
+		{name: uber, class: Morph},
+		
+		{name: init, class: Function, parameters: {
+													{name: tableMorph, class: TableMorph},
+													{name: noResize, class: Boolean}
+												  }
+		},
+		
+		{name: tableMorph, class: TableMorph},
+		{name: handle, class: HandleMorph},
+		
+		{name: fixLayout, class: Function},
+		{name: setExtent, class: Function, parameters: {
+														{name: aPoint, class: Point},
+														{name: silently, class: Boolean}
+													   }
+		},
+		{name: expand, class: Function, parameters: {
+														{name: maxExtent, class: Point}
+													}
+		}
+	}
+}!*/
+
+
+
+/* TableDialogMorph */
+
+/*@{
+	var,
+	name: TableDialogMorph,
+	class: Function,
+	return: TableDialogMorph,
+	parameters: {
+		{name: data, class: TableCellMorphData},
+		{name: globalColWidth, class: Number},
+		{name: colWidths, class: Array, type: Number},
+		{name: rowHeight, class: Number}
+	}
+}!*/
+
+/*@{
+	name: TableDialogMorph,
+	class: DialogBoxMorph,
+	properties: {
+		{name : constructor, class : Function, return: TableDialogMorph},
+		{name : uber, class : DialogBoxMorph},
+		
+		{name : init, class : Function, parameters: {
+														{name: data, class: TableCellMorphData},
+														{name: globalColWidth, class: Number},
+														{name: colWidths, class: Array, type: Number},
+														{name: rowHeight, class: Number}
+													}
+		},
+	
+		{name: handle, class: HandleMorph},
+		{name: data, class: TableCellMorphData},
+		{name: tableView, class: TableMorph},
+		
+		{name: buildContents, class: Function, parameters: {
+															{name: data, class: TableCellMorphData},
+															{name: globalColWidth, class: Number},
+															{name: colWidths, class: Array, type: Number},
+															{name: rowHeight, class: Number}
+														   }
+		
+		},
+		{name: setInitialDimensions, class: Function},
+		{name: popUp, class: Function, parameters: {
+													{name: world, class: WorldMorph}
+												   }
+		},
+		{name: fixLayout, class: Function}
+	}
+}!*/
+
+/* \TableDialogMorph */

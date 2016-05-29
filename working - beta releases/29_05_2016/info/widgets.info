@@ -1,0 +1,416 @@
+/**********************/
+/********WIDGETS*******/
+/**********************/
+
+/* delete */
+/* {passthrough} !*/
+
+/* PushButtonMorph */
+
+/*@{
+	var,
+	name: PushButtonMorph,
+	class: Function,
+	return: PushButtonMorph,
+	parameters: {
+		{name: target, class: Function},
+		{name: action, class: {Function, String} },
+		{name: labelString, class: {String, SymbolMorph} },
+		{name: environment, class: Object},
+		{name: hint, class: {String, Function}},
+		{name: template, class: Morph},
+	}
+}!*/
+
+/*@{
+	name: PushButtonMorph,
+	class: TriggerMorph,
+	properties: {
+		{name: constructor, class: Function, return: PushButtonMorph},
+		{name: uber, class: TriggerMorph},
+		{name: init, class: Function, parameters: {
+														{name: target, class: Function},
+														{name: action, class: {Function, String} },
+														{name: labelString, class: {String, SymbolMorph} },
+														{name: environment, class: Object},
+														{name: hint, class: {String, Function} },
+														{name: template, class: Morph}
+													 }
+		},
+		
+		{name: fontSize, class: Number},
+		{name: fontStyle, class: String},
+		{name: labelColor, class: Color},
+		{name: labelShadowColor, class: Color},
+		{name: labelShadowOffset, class: Point},
+		
+		{name: color, class: Color},
+		{name: pressColor, class: Color},
+		{name: highlightColor, class: Color},
+		{name: outlineColor, class: Color},
+		{name: outlineGradient, class: Boolean},
+		{name: contrast, class: Number},
+		
+		{name: edge, class: Number},
+		{name: corner, class: Number},
+		{name: outline, class: Number},
+		{name: padding, class: Number},
+		
+		{name: is3D, class: Boolean},
+		{name: target, class: Function},
+		{name: action, class: {Function, String} },
+		{name: environment, class: Object},
+		{name: labelString, class: {String, SymbolMorph} },
+		{name: label, class: StringMorph},
+		{name: labelMinExtent, class: Point},
+		{name: hint, class: {String, Function} },
+		{name: template, class: Morph},
+		
+		{name: edge, class: Number},
+		{name: corner, class: Number},
+		{name: outline, class: Number},
+		{name: padding, class: Number},
+		
+		{name: fixLayout, class: Function},
+		
+		{name: mouseDownLeft, class: Function},
+		{name: mouseClickLeft, class: Function},
+		{name: mouseLeave, class: Function},
+		
+		{name: outlinePath, class: Function},
+		{name: drawOutline, class: Function, parameters: {
+																{name: context, class: CanvasRenderingContext2D}
+															}
+		},
+		{name: drawBackground, class: Function, parameters: {
+																{name: context, class: CanvasRenderingContext2D},
+																{name: color, class: Color}
+															   }
+		},
+		{name: drawEdges, class: Function, parameters: {
+															{name: context, class: CanvasRenderingContext2D},
+															{name: color, class: Color},
+															{name: topColor, class: Color},
+															{name: bottomColor, class: Color}
+														  }
+		},
+		{name: createBackgrounds, class: Function},
+		{name: createLabel, class: Function}
+	}
+}!*/
+
+/* \PushButtonMorph */
+
+
+
+/* DialogBoxMorph */
+
+/*@{
+	var,
+	name: DialogBoxMorph,
+	class: Function,
+	return: DialogBoxMorph,
+	parameters: {
+		{name: target, class: Function},
+		{name: action, class: Boolean},
+		{name: environment, class: Function}
+	}
+}!*/
+
+/*@{
+	name: DialogBoxMorph,
+	class: Morph,
+	properties: {
+		{name: constructor, class: Function},
+		{name: uber, class: Morph},
+		{name: init, class: Function, parameters: {
+													{name: target, class: Function},
+													{name: action, class: Boolean},
+													{name: environment, class: Function}
+												  }
+		},
+		
+		{name: reactToChoice, class: Function, parameters: {
+															{name: inp, class: Number}
+														   }
+		},
+		
+		{name: fontSize, class: Number},
+		{name: titleFontSize, class: Number},
+		{name: fontStyle, class: String},
+		
+		{name: color, class: Color},
+		{name: titleTextColor, class: Color},
+		{name: titleBarColor, class: Color},
+		
+		{name: contrast, class: Number},
+		
+		{name: corner, class: Number},
+		{name: padding, class: Number},
+		{name: titlePadding, class: Number},
+		
+		{name: buttonContrast, class: Number},
+		{name: buttonFontSize, class: Number},
+		{name: buttonCorner, class: Number},
+		{name: buttonEdge, class: Number},
+		{name: buttonPadding, class: Number},
+		{name: buttonOutline, class: Number},
+		{name: buttonOutlineColor, class: Color},
+		{name: buttonOutlineGradient, class: Boolean},
+		
+		{name: instances, class: Object},
+		
+		{name: is3D, class: Boolean},
+		
+		{name: target, class: Joker},
+		{name: action, class: Joker},
+		{name: environment, class: Joker},
+		{name: key, class: String},
+		{name: labelString, class: String},
+		{name: label, class: Joker},
+		{name: head, class: Joker},
+		{name: body, class: Joker},
+		{name: buttons, class: Joker},
+		
+		{name: inform, class: Function, parameters: {
+															{name: title, class: String},
+															{name: textString, class: String},
+															{name: world, class: WorldMorph},
+															{name: pic, class: Joker}
+													   }
+		},
+		{name: askYesNo, class: Function, parameters: {
+															{name: title, class: String},
+															{name: textString, class: String},
+															{name: world, class: WorldMorph},
+															{name: pic, class: Joker}
+													     }
+		},
+		{name: prompt, class: Function, parameters: {
+															{name: title, class: String},
+															{name: defaultString, class: String},
+															{name: world, class: WorldMorph},
+															{name: pic, class: Joker},
+															{name: choices, class: Object},
+															{name: isReadOnly, class: Boolean},
+															{name: isNumeric, class: Boolean},
+															{name: sliderMin, class: Number},
+															{name: sliderMax, class: Number},
+															{name: sliderAction, class: Function}
+													   }
+		},
+		{name: promptCode, class: Function, parameters: {
+																{name: title, class: String},
+																{name: defaultString, class: String},
+																{name: world, class: WorldMorph},
+																{name: pic, class: Joker},
+																{name: instructions, class: String}
+													       }
+		},
+		{name: promptVector, class: Function, parameters: {
+																{name: title, class: String},
+																{name: point, class: Point},
+																{name: deflt, class: Point},
+																{name: xLabel, class: String},
+																{name: yLabel, class: String},
+																{name: world, class: WorldMorph},
+																{name: pic, class: Joker},
+																{name: msg, class: String}
+													         }
+		},
+		{name: accept, class: Function},
+		{name: withKey, class: Function, return: DialogBoxMorph, parameters: {
+																					{name: key, class: Joker}
+																				 }
+		},
+		{name: popUp, class: Function, parameters: {
+														{name: world, class: WorldMorph}
+													  }
+		},
+		{name: destroy, class: Function},
+		{name: ok, class: Function},
+		{name: cancel, class: Function},
+		{name: edit, class: Function},
+		{name: getInput, class: Function, return: null},
+		{name: justDropped, class: Function, parameters: {
+																{name: hand, class: Joker}
+															}
+		},
+		{name: destroy, class: Function},
+		{name: normalizeSpaces, class: Function, return: String, parameters: {
+																					{name: string, class: String}
+																				 }
+		},
+		
+		{name: createLabel, class: Function},
+		{name: createButtons, class: Function},
+		{name: addButton, class: Function, parameters: {
+															{name: action, class: String},
+															{name: label, class: String}
+														  }
+		},
+		{name: setPicture, class: Function, parameters: {
+															{name: aMorphOrCanvas, class: {Morph, HTMLCanvasElement} }
+														   }
+		},
+		{name: addHead, class: Function, parameters: {
+															{name: aMorph, class: Morph}
+														}
+		},
+		{name: addBody, class: Function, parameters: {
+															{name: aMorph, class: Morph}
+														}
+		},
+		
+		{name: addShadow, class: Function},
+		{name: removeShadow, class: Function},
+		{name: fixLayout, class: Function},
+		
+		{name: shadowImage, class: Function, return: HTMLCanvasElement, parameters: {
+																							{name: off, class: Point},
+																							{name: color, class: Color}
+																						}
+		},
+		{name: shadowImageBlurred, class: Function, return: HTMLCanvasElement, parameters: {
+																								{name: off, class: Point},
+																								{name: color, class: Color}
+																							   }
+		},
+		
+		{name: processKeyPress, class: Function},
+		{name: processKeyDown, class: Function, parameters: {
+																	{name: event, class: Event}
+															   }
+		},
+		{name: drawNew, class: Function},
+		{name: outlinePathTitle, class: Function, parameters: {
+																	{name: context, class: CanvasRenderingContext2D},
+																	{name: radius, class: Number}
+															     }
+		},
+		{name: outlinePathBody, class: Function, parameters: {
+																	{name: context, class: CanvasRenderingContext2D},
+																	{name: radius, class: Number}
+															    }
+		}
+	}
+}!*/
+
+/* \DialogBoxMorph */
+
+
+
+/* AlignmentMorph */
+
+/*@{
+	var,
+	name: AlignmentMorph,
+	class: Function,
+	return: AlignmentMorph,
+	parameters:	{
+		{name: orientation, class: String},
+		{name: padding, class: Number}
+	}
+}!*/
+
+/*@{
+	name: AlignmentMorph,
+	class: Morph,
+	properties: {
+		{name: constructor, class: Function, return: AlignmentMorph},
+		{name: uber, class: Morph},
+		{name: init, class: Function, parameters: {
+													{name: orientation, class: String},
+													{name: padding, class: Number}
+												  }
+		},
+		
+		{name: orientation, class: String},
+		{name: alignment, class: String},
+		{name: padding, class: Number},
+		{name: respectHiddens, class: Boolean},
+		
+		{name: drawNew, class: Function},
+		{name: fixLayout, class: Function}		
+	}
+}!*/
+
+/* \AlignmentMorph */
+
+
+
+/* InputFieldMorph */
+
+/*@{
+	var,
+	name: InputFieldMorph,
+	class: Function,
+	return: InputFieldMorph,
+	parameters: {
+		{name: text, class: String},
+		{name: isNumeric, class: Boolean},
+		{name: choiceDict, class: Function},
+		{name: isReadOnly, class: Boolean}
+	}
+}!*/
+
+/*@{
+	name: InputFieldMorph,
+	class: Morph,
+	properties: {
+		{name: constructor, class: Function, return: InputFieldMorph},
+		{name: uber, class: Morph},
+		{name: init, class: Function, parameters: {
+													{name: text, class: String},
+													{name: isNumeric, class: Boolean},
+													{name: choiceDict, class: Function},
+													{name: isReadOnly, class: Boolean}
+												  }
+		},
+		
+		{name: reactToKeystroke, class: Function},
+		{name: [], class: Function},
+		
+		{name: edge, class: Number},
+		{name: fontSize, class: Number},
+		{name: typeInPadding, class: Number},
+		{name: contrast, class: Number},
+		
+		{name: choices, class: {Function, String} },
+		{name: isReadOnly, class: Boolean},
+		{name: isNumeric, class: Boolean},
+		{name: oldContentsExtent, class: Number},
+		
+		{name: contents, class: Function},
+		{name: arrow, class: Function},
+		{name: setChoice, class: Function, parameters: {
+														{name: aStringOrFloat, class: {String, Number} }
+													   }
+		},
+		{name: setContents, class: Function, parameters: {
+															{name: aStringOrFloat, class: {String, Number} }
+														 }
+		},
+		{name: edit, class: Function},
+		{name: setIsNumeric, class: Function, parameters: {
+															{name: bool, class: Boolean}
+														  }
+		},
+		{name: edit, class: Function},
+		{name: fixLayout, class: Function, return: null},
+		{name: dropDownMenu, class: Function, return: null},
+		{name: mouseClickLeft, class: Function, parameters: {
+																{name: pos, class: Point}
+															}
+		},
+		{name: getValue, class: Function, return: String},
+		{name: normalizeSpaces, class: Function, return: String},
+		{name: drawNew, class: Function},
+		{name: drawRectBorder, class: Function, parameters: {
+																{name: context, class: CanvasRenderingContext2D}
+															}
+		}
+	}
+}!*/
+
+/* \InputFieldMorph */

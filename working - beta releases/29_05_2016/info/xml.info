@@ -1,0 +1,92 @@
+/**********************/
+/*********XML**********/
+/**********************/
+
+/*@ {passthrough} !*/
+
+/* XML_Element */
+
+//not necessary
+
+/* \XML_Element */
+
+/* XML_Element */
+
+//we skip parameters as we won't be refactoring this file
+
+/*@
+{
+	var,
+	name : XML_Element,
+	class : Function,
+	return : XML_Element
+}
+!*/
+
+//we'll add manually all properties to attributes
+//after all they're all in the code anyways
+//we could also just declare it as a Joker
+
+/*@
+{
+	name : XML_Element,
+	class : Node,
+	properties :
+	{
+		{name : constructor, class : Function, return : XML_Element},
+		{name : uber, class : Node},
+		{name : init, class : Function},
+		
+		{name : tag, class : String},
+		{name : attributes, class : Object, 
+		 properties : {
+						{name : [], class : XML_Element},
+						{name : name, class : String},
+						{name : id, class : String},
+						{name : scheduled, class : String},
+						{name : tempo, class : String},
+						{name : width, class : String},
+						{name : height, class : String},
+						{name : lines, class : String},
+						{name : threadsafe, class : String},
+						{name : codify, class : String},
+						{name : inheritance, class : String},
+						{name : color, class : String},
+						{name : scope, class : String},
+						{name : hidden, class : String},
+						{name : s, class : String},
+						{name : style, class : String},
+						{name : min, class : String},
+						{name : max, class : String},
+						{name : x, class : String},
+						{name : y, class : String},
+						{name : extX, class : String},
+						{name : extY, class : String},
+						{name : costume, class : String},
+						{name : mediaID, class : String},
+						{name : idx, class : String},
+						{name : pen, class : String},
+						{name : scale, class : String},
+						{name : draggable, class : String},
+						{name : heading, class : String},
+						{name : sound, class : String},
+						{name : image, class : String},
+						{name : rotation, class : String},
+					  }
+		},
+		{name : contents, class : String},
+		
+		{name : require, class : Function, return : XML_Element},
+		{name : childNamed, class : Function, return : XML_Element},
+		{name : childrenNamed, class : Function, return : {{class : Array, type : XML_Element}} },
+		{name : parentNamed, class : Function, return : XML_Element},
+		{name : toString, class : Function, return : String},
+		{name : escape, class : Function, return : String},
+		{name : unescape, class : Function, return : String},
+		{name : parseString, class : Function},
+		{name : parseStream, class : Function, return : String}
+	}
+}
+!*/
+
+/* \XML_Element */

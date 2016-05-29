@@ -1,0 +1,148 @@
+/**********************/
+/********THREADS*******/
+/**********************/
+
+/*@ {passthrough} !*/
+
+
+/***** Global Functions */
+
+/*@{
+	var,
+	name: snapEquals,
+	class: Function,
+	return: Boolean
+}!*/
+
+/***** \Global Functions */
+
+
+
+/***** ThreadManager */
+
+/*@{
+	var,
+	name: ThreadManager,
+	class: Function,
+	return: ThreadManager
+}!*/
+
+/*@{
+	name: ThreadManager,
+	class: Joker
+}!*/
+
+/***** \ThreadManager */
+
+
+
+/***** Process */
+
+/*@{
+	name: Process,
+	class: Object,
+	properties: {
+		{name: isCatchingErrors, class: Boolean},
+		{name: reify, class: Function, return: Context}
+	}
+}!*/
+
+/***** \Process */
+
+
+
+/***** Context */
+
+/*@{
+	var,
+	name: Context,
+	class: Function,
+	return: Context
+}!*/
+
+/*@{
+	name: Context,
+	class: Object,
+	properties: {
+		{name: inputs, class: Array, type: Joker},
+		{name: copy, class: Function, return: Variable},
+		{name: expression, class: {String, SyntaxElementMorph, null, {class: List, type: Joker}} },
+		{name: receiver, class: Joker},
+		{name: variables, class: VariableFrame},
+		{name: outerContext, class: Context},
+		
+		{name: toString, class: Function, return: String},
+		{name: image, class: Function, return: HTMLCanvasElement},
+	}
+}!*/
+
+/***** \Context */
+
+
+
+/***** Variable */
+
+/*@{
+	var,
+	name: Variable,
+	class: Function,
+	return: Variable,
+	parameters: {
+		{name: value, class: Joker},
+		{name: isTransient, class: Boolean}
+	}
+}!*/
+
+/*@{
+	name: Variable,
+	class: Object,
+	properties: {
+		{name: value, class: Joker},
+		{name: isTransient, class: Boolean},
+	
+		{name: toString, class: Function, return: String},
+		{name: copy, class: Function, return: Variable}
+	}
+}!*/
+
+/***** \Variable */
+
+
+
+/***** VariableFrame */
+
+/*@{
+	var,
+	name: VariableFrame,
+	class: Function,
+	return: VariableFrame
+}!*/
+
+/*@{
+	name: VariableFrame,
+	class: Object,
+	properties: 
+	{
+		{name: fullCopy, class: Function, return: VariableFrame},
+	
+		{name: vars, class: Joker},
+		{name: parentFrame, class: Joker},
+		{name: owner, class: Joker},
+		
+		{name: toString, class: Function, return: String},
+		{name: copy, class: Function, return: VariableFrame},
+		{name: deepCopy, class: Function, return: VariableFrame},
+		{name: find, class: Function, return: VariableFrame},
+		{name: silentFind, class: Function, return: VariableFrame},
+		{name: setVar, class: Function},
+		{name: changeVar, class: Function},
+		{name: getVar, class: Function, return: {String, Boolean, Number} },
+		{name: addVar, class: Function},
+		{name: deleteVar, class: Function},
+		{name: names, class: Function, return: {{class: Array, type: Joker}} },
+		{name: allNamesDict, class: Function, return: Joker},
+		{name: allNames, class: Function, class: Function, return: {{class: Array, type: Joker}} }
+	}
+}!*/
+
+/***** \VariableFrame */

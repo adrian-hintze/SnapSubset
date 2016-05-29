@@ -1,0 +1,105 @@
+/**********************/
+/*********GUI**********/
+/**********************/
+
+/* IDE_Morph */
+
+/*
+	{name : openIn, class : Function, parameters : {
+														{name : world, class : WorldMorph}
+												   }
+	}
+	
+	{name : snapproject, class : String},
+*/
+
+/*@
+{
+	var,
+	name : IDE_Morph,
+	class : Function,
+	return : IDE_Morph,
+	parameters : {
+					{name : isAutoFill, class : Boolean}
+				 }
+}
+!*/
+
+/*@
+{
+	name : IDE_Morph,
+	class : Morph,
+	properties : 
+	{
+		{name : constructor, class : Function, return : IDE_Morph},
+		{name : uber, class : Morph},
+
+		{name : backgroundColor, class : Color},
+		{name : appModeColor, class : Color},
+		{name : padding, class : Number},
+		
+		{name : serializer, class : {SnapSerializer, Number} },
+		{name : globalVariables, class : VariableFrame},
+		{name : stage, class : StageMorph},
+		{name : isAutoFill, class : Boolean},
+		{name : isAppMode, class : Boolean},
+		{name : isAnimating, class : Boolean},
+		{name : shield, class : Morph},
+		{name : color, class : Color},
+		{name : isSmallStage, class : Boolean},
+		{name : stageRatio, class : Number},
+		
+
+		{name : setDefaultDesign, class : Function},
+		{name : init, class : Function, parameters : {
+														{name : isAutoFill, class : WorldMorph}
+													 }
+		},
+		{name : buildPanes, class : Function},
+		{name : createStage, class : Function},
+		{name : fixLayout, class : Function, parameters : {
+															{name : situation, class : String}
+														  }
+		},
+		{name : setExtent, class : Function, parameters : {
+															{name : point, class : Point}
+														  }
+		},
+		{name : reactToWorldResize, class : Function, parameters : {
+																	{name : rect, class : Rectangle}
+																   }
+		},
+		{name : startFastTracking, class : Function},
+		{name : stopFastTracking, class : Function},
+		{name : runScripts, class : Function},
+		{name : isPaused, class : Function, return : Boolean},
+		{name : refreshIDE, class : Function},
+		{name : applySavedSettings, class : Function},
+		{name : saveSetting, class : Function, return : String, parameters : {
+																				{name : key, class : String},
+																				{name : value, class : Object}
+																			 }
+		},
+		{name : getSetting, class : Function, return : String, parameters : {
+																				{name : key, class : String}
+																			}
+		},
+		{name : removeSetting, class : Function, parameters : {
+																{name : key, class : String}
+															  }
+		},
+		{name : rawOpenProjectString, class : Function, parameters : {
+																		{name : str, class : String}
+																	 }
+		},
+		{name : toggleZebraColoring, class : Function},
+		{name : toggleBlurredShadows, class : Function},
+		{name : toggleAppMode, class : Function, parameters : {
+																{name : appMode, class : Boolean}
+															  }
+		}
+	}
+}
+!*/
+
+/* \IDE_Morph */

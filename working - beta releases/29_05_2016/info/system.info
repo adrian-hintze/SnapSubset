@@ -1,0 +1,761 @@
+/**********************/
+/******JAVASCRIPT******/
+/**********************/
+
+/*@ {passthrough} !*/
+
+/***** functions */
+
+/*@ {var, name : isNaN, class : Function, return : Boolean} !*/
+
+/*@ {var, name : eval, class : Function, return : Object} !*/
+
+/*@ {var, name : parseFloat, class : Function, return : Number} !*/
+
+/*@ {var, name : sizeOf, class : Function, return : Number} !*/
+
+/*@ {var, name : setInterval, class : Function} !*/
+
+/*@ {var, name : clearInterval, class : Function} !*/
+
+
+/**** \functions */
+
+
+
+/**** document */
+
+/*@
+{
+	var,
+	name : document,
+	class : Object,
+	properties : 
+	{
+		{name : createElement, class : Function, return : Joker}
+	}
+}
+!*/
+
+/**** \document */
+
+
+
+/**** window */
+
+/*@
+{
+	var,
+	name : window,
+	class : Object,
+	properties : 
+	{
+		{name : AudioContext, class : AudioContext},
+		{name : mozAudioContext, class : AudioContext},
+		{name : msAudioContext, class : AudioContext},
+		{name : oAudioContext, class : AudioContext},
+		{name : webkitAudioContext, class : AudioContext}
+	}
+}
+!*/
+
+
+/**** \window */
+
+
+
+/**** Audio stuff */
+
+//!! this is an auxiliary class to wrap all of window audio related properties into one
+/*@
+{
+	name : AudioContext,
+	class : Object,
+	properties :
+	{
+		{name : createGain, class : Function, return: GainNode},
+		{name : createGainNode, class : Function, return: GainNode},
+		{name : createOscillator, class : Function, return: OscillatorNode},
+		{name : destination, class : AudioDestinationNode}
+	}
+}
+!*/
+
+/*@
+{
+	name : AudioNode,
+	class : Object,
+	properties : 
+	{
+		{name : connect, class : Function}
+	}
+}
+!*/
+
+/*@
+{
+	name : AudioDestinationNode,
+	class : AudioNode
+}
+!*/
+
+/*@
+{
+	name : GainNode,
+	class : AudioNode,
+	properties :
+	{
+		{name : gain, class : AudioParam}
+	}
+}
+!*/
+
+/*@
+{
+	name : OscillatorNode,
+	class : AudioNode,
+	properties :
+	{
+		{name : start, class : Function},
+		{name : stop, class : Function},
+		{name : noteOn, class : Function},
+		{name : noteOff, class : Function},
+		{name : type, class : String},
+		{name : frequency, class : AudioParam}
+	}
+}
+!*/
+
+/*@
+{
+	name : AudioParam,
+	class : Object,
+	properties :
+	{
+		{name : value, class : Number}
+	}
+}
+!*/
+
+/**** \Audio stuff */
+
+
+
+/**** Object */
+
+/*@
+{
+	var,
+	name : Object,
+	class : Function,
+	return : Object
+}
+!*/
+
+/* SPECIAL CASE! Object has no parent Class as it is the top of the chain*/
+/*@
+{
+	name : Object,
+	properties :
+	{
+		{name : [], class : Joker},
+		{name : valueOf, class : Function, return : Joker},
+		{name : hasOwnProperty, class : Function, return : Boolean},
+		{name : toString, class : Function, return : String},
+		{name : keys, class : Function, return : {{class : Array, type : String}} },
+	}
+} 
+!*/
+
+/**** \Object */
+
+
+
+/**** Date */
+
+/*@
+{
+	var,
+	name : Date,
+	class : Function,
+	return : Date
+}
+!*/
+
+/*@
+{
+	name : Date,
+	class : Object,
+	properties : 
+	{
+		{name : now, class : Function, return : Number}
+	}
+}
+!*/
+
+/**** \Date */
+
+
+
+/**** Function */
+
+/*@
+{
+	var,
+	name : Function,
+	class : Function,
+	return : Function
+}
+!*/
+
+/*@
+{
+	name : Function,
+	class : Object
+}
+!*/
+
+/**** \Function */
+
+
+
+/**** Event */
+//Warning! we'll put everything event related into event to make things easier
+//if it creates issues we'll define a class for every event type
+/*@
+{
+	name : Event,
+	class : Object,
+	properties :
+	{
+		{name : keyCode, class : Number},
+		{name : ctrlKey, class : Boolean},
+		{name : metaKey, class : Boolean},
+		{name : shiftKey, class : Boolean},
+		{name : pageX, class : Number},
+		{name : pageY, class : Number},
+		{name : wheelDeltaY, class : Number},
+		{name : wheelDeltaX, class : Number},
+		{name : detail, class : Number}
+	}
+}
+!*/
+
+/**** \Event */
+
+
+
+/**** FileReader */
+
+/*@
+{
+	var,
+	name : FileReader,
+	class : Function,
+	return : FileReader
+}
+!*/
+
+/*@
+{
+	name : FileReader,
+	class : Object,
+	properties :
+	{
+		{name : onloadend, class : Function},
+		{name : readAsText, class : Function}
+	}
+}
+!*/
+
+/**** \FileReader */
+
+
+
+/**** Element */
+
+/*@
+{
+	name : Element,
+	class : Object
+}
+!*/
+
+/**** \Element */
+
+
+
+/**** HTMLElement */
+/*@
+{
+	name : HTMLElement,
+	class : Element,
+	properties :
+	{
+		{name : offsetLeft, class : Number},
+		{name : offsetTop, class : Number},
+		{name : offsetLeft, class : offsetParent}
+	}
+}
+!*/
+
+/**** \HTMLElement */
+
+
+
+/**** Canvas & Co ****/
+
+/**** HTMLCanvasElement */
+
+/*@
+{
+	var,
+	name : HTMLCanvasElement,
+	class : Function,
+	return : HTMLCanvasElement
+}
+!*/
+
+/*@{
+	name: HTMLCanvasElement,
+	class: HTMLElement,
+	properties: {
+		{name: height, class: Number},
+		{name: width, class: Number},
+		{name: getContext, class: Function, return: CanvasRenderingContext2D}
+	}
+}!*/
+
+/**** \HTMLCanvasElement */
+
+/**** CanvasRenderingContext2D */
+
+/*@{
+	name: CanvasRenderingContext2D,
+	class: Object,
+	properties: {
+		{name: measureText, class: Function, return: TextMetrics},
+		{name: drawImage, class: Function},
+		{name: fillText, class: Function},
+		{name: fillRect, class: Function},
+		{name: createLinearGradient, class: Function, return: CanvasGradient},
+		{name: fillStyle, class: {String, CanvasGradient, CanvasPattern} },
+		{name: beginPath, class: Function},
+		{name: closePath, class: Function},
+		{name: fill, class: Function},
+		{name: lineWidth, class: Number},
+		{name: strokeStyle, class: {String, CanvasGradient, CanvasPattern} },
+		{name: lineCap, class: String},
+		{name: lineJoin, class: String},
+		{name: moveTo, class: Function},
+		{name: lineTo, class: Function},
+		{name: stroke, class: Function},
+		{name: createRadialGradient, class: Function, return: CanvasGradient},
+		{name: arc, class: Function},
+		{name: shadowOffsetY, class: Number},
+		{name: shadowOffsetX, class: Number},
+		{name: shadowBlur, class: Number},
+		{name: shadowColor, class: String},
+		{name: globalCompositeOperation, class: String},
+		{name: clearRect, class: Function},
+		{name: translate, class: Function},
+		{name: scale, class: Function},
+		{name: getImageData, class: Function, return: ImageData},
+		{name: putImageData, class: Function},
+		{name: createImageData, class: Function, return: ImageData},
+		{name: save, class: Function},
+		{name: restore, class: Function},
+		{name: rotate, class: Function},
+		{name: font, class: String},
+		{name: textAlign, class: String},
+		{name: textBaseline, class: String}
+	}
+}!*/
+
+/**** \CanvasRenderingContext2D */
+
+/**** ImageData */
+
+/*@
+{
+	name : ImageData,
+	class : Object,
+	properties :
+	{
+		{name : data, class : Array, type : Number}
+	}
+}
+!*/
+
+/**** \ImageData */
+
+/**** CanvasGradient */
+
+/*@
+{
+	name : CanvasGradient,
+	class : Object,
+	properties : 
+	{
+		{name : addColorStop, class : Function}
+	}
+}
+!*/
+
+/**** \CanvasGradient */
+
+/**** CanvasPattern */
+
+
+/*@
+{
+	name : CanvasPattern,
+	class : Object
+}
+!*/
+
+/* \CanvasPattern */
+
+/* TextMetrics */
+
+
+/*@
+{
+	name : TextMetrics,
+	class : Object,
+	properties : 
+	{
+		{name : width, class : Number}
+	}
+}
+!*/
+
+/**** \TextMetrics */
+
+/**** \Canvas & Co ****/
+
+
+
+/**** Math */
+
+/*@
+{
+	name : Math,
+	class : Object,
+	properties :
+	{
+		{name : round, class : Function, return : Number},
+		{name : max, class : Function, return : Number},
+		{name : min, class : Function, return : Number},
+		{name : ceil, class : Function, return : Number},
+		{name : floor, class : Function, return : Number},
+		{name : pow, class : Function, return : Number},
+		{name : sin, class : Function, return : Number},
+		{name : cos, class : Function, return : Number},
+		{name : abs, class : Function, return : Number},
+		{name : atan, class : Function, return : Number},
+		{name : atan2, class : Function, return : Number},
+	}
+}
+!*/
+
+/**** \Math */
+
+
+
+/**** Input */
+
+/*@
+{
+	name : Input,
+	class : Joker
+}
+!*/
+
+/**** \Input */
+
+
+
+/**** HTMLElement */
+
+/*@
+{
+	name : HTMLElement,
+	class : Object
+}
+!*/
+
+/**** \HTMLElement */
+
+
+
+/**** HTMLMediaElement */
+
+/*@
+{
+	name : HTMLMediaElement,
+	class : HTMLElement,
+	properties :
+	{
+		{name : src, class : String},
+		{name : play, class : Function}
+	}
+}
+!*/
+
+/**** \HTMLMediaElement */
+
+
+
+/**** HTMLAudioElement */
+
+/*@
+{
+	name : HTMLAudioElement,
+	class : HTMLMediaElement
+}
+!*/
+
+/**** \HTMLAudioElement */
+
+
+
+/**** ArrayBuffer */
+
+/*@
+{
+	name : ArrayBuffer,
+	class : Joker
+}
+!*/
+
+/**** \ArrayBuffer */
+
+
+
+/**** Array */
+
+/*@
+{
+	var,
+	name : Array,
+	class : Function,
+	return : Array
+}
+!*/
+
+/*@
+{
+	name : Array,
+	class : Object,
+	properties :
+	{
+		{name : length, class : Number},
+		{name : forEach, class : Function},
+		{name : push, class : Function},
+		{name : filter, class : Function, return : Joker},
+		{name : reverse, class : Function, return : {{class : Array, type : Joker}} },
+		{name : splice, class : Function, return : {{class : Array, type : Joker}} },
+		{name : slice, class : Function, return : Joker},
+		{name : indexOf, class : Function, return : Number},
+		{name : map, class : Function, return : {{class : Array, type : Joker}} },
+		{name : concat, class : Function, return : {{class : Array, type : Joker}} },
+		{name : some, class : Function, return : Boolean},
+		{name : set, class : Function}
+	}
+}
+!*/
+
+/**** \Array */
+
+
+
+/**** Number */
+
+/*@
+{
+	var,
+	name : Number,
+	class : Function,
+	return : Number
+}
+!*/
+
+/*@
+{
+	name : Number, 
+	class : Object
+}
+!*/
+
+/**** \Number */
+
+
+
+/**** String */
+
+/*@
+{
+	var,
+	name : String,
+	class : Function,
+	return : String
+}
+!*/
+
+/*@
+{
+	name: String,
+	class: Object,
+	properties: {
+		{name: length, class: Number},
+		{name: slice, class: Function, return: String},
+		{name: concat, class: Function, return: String},
+		{name: trim, class: Function, return: String},
+		{name: replace, class: Function, return: String},
+		{name: split, class: Function, return: {{class: Array, type: String}} },
+		{name: [], class: String},
+		{name: indexOf, class: Function, return: Number},
+		{name: fromCharCode, class: Function, return: String},
+		{name: toLowerCase, class: Function, return: String},
+		{name: toUpperCase, class: Function, return: String},
+		{name: fromCharCode, class: Function, return: String},
+		{name: repeat, class: Function, return: String}
+	}
+} 
+!*/
+
+/**** \String */
+
+
+
+/**** Audio */
+
+/*@
+{
+	var,
+	name : Audio,
+	class : Function,
+	return : Audio
+}
+!*/
+
+/*@
+{
+	name : Audio,
+	class : Object,
+	properties :
+	{
+		{name : src, class : String}
+	}
+} 
+!*/
+
+/**** \Audio */
+
+
+
+/**** Image */
+
+/*@
+{
+	var,
+	name : Image,
+	class : Function,
+	return : HTMLImageElement
+}
+!*/
+
+/*@
+{
+	name : HTMLImageElement,
+	class : HTMLElement,
+	properties :
+	{
+		{name : src, class : String},
+		{name : onload, class : Function},
+		{name : width, class : Function},
+		{name : height, class : Function}
+	}
+} 
+!*/
+
+/**** \Image */
+
+
+
+/**** Boolean */
+
+/*@
+{
+	var,
+	name : Boolean,
+	class : Function,
+	return : Boolean
+}
+!*/
+
+/*@
+{
+	name : Boolean,
+	class : Object
+} 
+!*/
+
+/**** \Boolean */
+
+
+
+/**** Error */
+
+/*@
+{
+	var,
+	name : Error,
+	class : Function,
+	return : Error
+}
+!*/
+
+/*@
+{
+	name : Error,
+	class : Object
+} 
+!*/
+
+/**** \Error */
+
+
+
+/**** null */
+
+/*@
+{
+	var,
+	name : null,
+	class : Joker
+}
+!*/
+
+/*@
+{
+	name : null,
+	class : Joker
+}
+!*/
+
+/**** \null */
+
+
+/**** undefined */
+
+/*@
+{
+	var,
+	name : undefined,
+	class : Joker
+}
+!*/
+
+/**** \undefined */

@@ -1,0 +1,204 @@
+/**********************/
+/*********BYOB*********/
+/**********************/
+
+/* delete */
+/* {passthrough} !*/
+
+/* CustomBlockDefinition */
+
+/*@{
+	var,
+	name: CustomBlockDefinition,
+	class: Function,
+	return: CustomBlockDefinition,
+	parameters: {
+		{name: spec, class: String},
+		{name: receiver, class: {SpriteMorph, {class: Function, return: SpriteMorph}} }
+	}
+}!*/
+
+/*@{
+	name: CustomBlockDefinition,
+	class: Object,
+	properties: {
+		{name: names, class: {{class: Array, type: String}} },
+	
+		{name: body, class: Joker},
+		{name: scripts, class: Array, type: Joker},
+		{name: category, class: Joker},
+		{name: isGlobal, class: Boolean},
+		{name: type, class: String},
+		{name: spec, class: String},
+		{name: declarations, class: Joker},
+		{name: variableNames, class: Array, type: Joker},
+		{name: comment, class: Joker},
+		{name: codeMapping, class: Joker},
+		{name: codeHeader, class: Joker},
+		{name: receiver, class: Joker},
+		{name: editorDimensions, class: Rectangle},
+		
+		{name: copyAndBindTo, class: Function, return: CustomBlockDefinition, parameters: {
+																							{name: sprite, class: SpriteMorph}	
+																						  }
+		},
+		{name: blockSpec, class: Function, return: String},
+		{name: typeOf, class: Function, return: String, parameters: {
+																		{name: inputName, class: String}
+																	}
+		},
+		{name: isReadOnlyInputIdx, class: Function, return: Boolean, parameters: {
+																					{name: idx, class: String}
+																				 }
+		},
+		{name: inputOptionsOfIdx, class: Function, return: Joker, parameters: {
+																				{name: idx, class: String}
+																			  }
+		},
+		{name: dropDownMenuOf, class: Function, return: Joker, parameters: {
+																			{name: inputName, class: String}
+																		   }
+		},
+		{name: isReadOnlyInput, class: Function, return: Boolean, parameters: {
+																				{name: inputName, class: String}
+																			  }
+		},
+		{name: inputOptionsOf, class: Function, return: {{class: Array, type: Joker}}, parameters: {
+																									{name: inputName, class: String}
+																								   } 
+		},
+		{name: inputNames, class: Function, return: {{class: Array, type: Joker}} },
+		{name: parseSpec, class: Function, return: {{class: Array, type: String}}, parameters: {
+																								{name: spec, class: {{class: Array, type: String}} }
+																							   }
+		}
+	}
+}!*/
+
+/* \CustomBlockDefinition */
+
+
+
+/* CustomCommandBlockMorph */
+
+/*@{
+	var,
+	name: CustomCommandBlockMorph,
+	class: Function,
+	return: CustomCommandBlockMorph,
+	parameters: {
+		{name: definition, class: Joker},
+		{name: isProto, class: Boolean}
+	}
+}!*/
+
+/*@{
+	name: CustomCommandBlockMorph,
+	class: CommandBlockMorph,
+	properties: {
+		{name: constructor, class: Function, return: CustomCommandBlockMorph},
+		{name: uber, class: CommandBlockMorph},
+		
+		{name: init, class: Function, parameters: {
+													{name: definition, class: Joker},
+													{name: isProto, class: Boolean}
+												  }
+		},
+		
+		{name: definition, class: Joker},
+		{name: isPrototype, class: Boolean},
+		
+		{name: initializeVariables, class: Function, parameters: {
+																	{name: oldVars, class: {{class: Array, type: Variable}} }
+																 }
+		},
+		
+		{name: refresh, class: Function, parameters: {
+														{name: silently, class: Boolean}
+													 }
+		},
+		{name: upvarFragmentNames, class: Function, return: {{class: Array, type: String}} },
+		{name: upvarFragmentName, class: Function, return: String, parameters: {
+																				{name: idx, class: String}
+																			   }
+		},
+		{name: specFromFragments, class: Function, return: String},
+		{name: blockSpecFromFragments, class: Function, return: String},
+		{name: parseSpec, class: Function, return: {{class: Array, type: String}}, parameters: {
+																								{name: spec, class: String}
+																							   }
+		},
+		{name: labelPart, class: Function, return: {BlockInputFragmentMorph, BlockLabelFragmentMorph}, parameters: {
+																													{name: spec, class: {{class: Array, type: String}}}
+																												   }
+		},
+		{name: attachTargets, class: Function, return: {{class: Array, type: {{class: Object, properties: {
+																											{name: point, type: Point},
+																											{name: element, type: {CommandBlockMorph, CustomCommandBlockMorph} },
+																											{name: loc, type: String},
+																											{name: type, type: String}
+																										  } 
+													   }} }}
+		},
+		{name: isInUse, class: Function, return: Boolean}
+	}
+}!*/
+
+/* \CustomCommandBlockMorph */
+
+
+
+/* CustomReporterBlockMorph */
+
+/*@{
+	var,
+	name: CustomReporterBlockMorph,
+	class: Function,
+	return: CustomReporterBlockMorph,
+	parameters: {
+		{name: definition, class: Joker},
+		{name: isPredicate, class: Boolean},
+		{name: isProto, class: Boolean}
+	}
+}!*/
+
+/*@{
+	name: CustomReporterBlockMorph,
+	class: ReporterBlockMorph,
+	properties: {
+		{name: constructor, class: Function, return: CustomReporterBlockMorph},
+		{name: uber, class: ReporterBlockMorph},
+		
+		{name: init, class: Function, parameters: {
+													{name: definition, class: Joker},
+													{name: isPredicate, class: Boolean},
+													{name: isProto, class: Boolean}
+												  }
+		},
+		
+		{name: definition, class: Joker},
+		{name: isPrototype, class: Boolean},
+		
+		{name: initializeVariables, class: Function, parameters: {
+																	{name: oldVars, class: {{class: Array, type: Variable}} }
+																 }
+		},
+		
+		{name: refresh, class: Function},
+		{name: parseSpec, class: Function, return: {{class: Array, type: String}} },
+		{name: labelPart, class: Function, return: {BlockInputFragmentMorph, BlockLabelFragmentMorph}, parameters: {
+																													{name: spec, class: {{class: Array, type: String}} }
+																												   }
+		},
+		{name: upvarFragmentNames, class: Function, return: {{class: Array, type: String}} },
+		{name: upvarFragmentName, class: Function, return: String, parameters: {
+																				{name: idx, class: String}
+																			   }
+		},
+		{name: specFromFragments, class: Function, return: String},
+		{name: blockSpecFromFragments, class: Function, return: String},
+		{name: isInUse, class: Function, return: Boolean}
+	}
+}!*/
+
+/* \CustomReporterBlockMorph */

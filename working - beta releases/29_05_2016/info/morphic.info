@@ -1,0 +1,2288 @@
+/********************************/
+/*************MORPHIC************/
+/********************************/
+
+/*@ {passthrough} !*/
+
+/* Attention! As we do not plan to parse Morphic.js we need to add this here manually */
+/* Global properties */
+
+/*@{
+	var,
+	name: MorphicPreferences,
+	class: Object,
+	properties: {
+		{name: minimumFontHeight, class: Number},
+		{name: globalFontFamily, class: String},
+		{name: menuFontName, class: String},
+		{name: menuFontSize, class: Number},
+		{name: bubbleHelpFontSize, class: Number},
+		{name: prompterFontName, class: String},
+		{name: prompterFontSize, class: Number},
+		{name: prompterSliderSize, class: Number},
+		{name: handleSize, class: Number},
+		{name: scrollBarSize, class: Number},
+		{name: mouseScrollAmount, class: Number},
+		{name: useSliderForInput, class: Boolean},
+		{name: useVirtualKeyboard, class: Boolean},
+		{name: isTouchDevice, class: Boolean},
+		{name: rasterizeSVGs, class: Boolean},
+		{name: isFlat, class: Boolean}
+	}
+}!*/
+
+/* \Global properties */
+
+
+
+/* Global Functions */
+
+/*@{
+	var,
+	name: nop,
+	class: Function,
+	return: null
+}!*/
+
+/*@{
+	var,
+	name: localize,
+	class: Function,
+	return: String
+}!*/
+
+/*@{
+	var,
+	name: isNil,
+	class: Function,
+	return: Boolean,
+	parameters: {
+		{name: thing, class: Object}
+	}
+}!*/
+
+/*@{
+	var,
+	name: contains,
+	class: Function,
+	return: Boolean,
+	parameters: {
+		{name: list, class: Array, type: Object},
+		{name: element, class: Object}
+	}
+}!*/
+
+/*@{
+	var,
+	name: detect,
+	class: Function,
+	return: Joker,
+	parameters: {
+		{name: list, class: Array, type: Joker},
+		{name: predicate, class: Function, return: Boolean}
+	}
+}!*/
+
+/*@{
+	var,
+	name: sizeOf,
+	class: Function,
+	return: Number,
+	parameters: {
+		{name: object, class: Object}
+	}
+}!*/
+
+/*@{
+	var,
+	name: isString,
+	class: Function,
+	return: Boolean,
+	parameters: {
+		{name: target, class: Object}
+	}
+}!*/
+
+/*@{
+	var,
+	name: isObject,
+	class: Function,
+	return: Boolean,
+	parameters: {
+		{name: target, class: Object}
+	}
+}!*/
+
+/*@{
+	var,
+	name: radians,
+	class: Function,
+	return: Number,
+	parameters: {
+		{name: degrees, class: Number}
+	}
+}!*/
+
+/*@{
+	var,
+	name: degrees,
+	class: Function,
+	return: Number,
+	parameters: {
+		{name: radians, class: Number}
+	}
+}!*/
+
+/*@{
+	var,
+	name: fontHeight,
+	class: Function,
+	return: Number,
+	parameters: {
+		{name: height, class: Number}
+	}
+}!*/
+
+/*@{
+	var,
+	name: newCanvas,
+	class: Function,
+	return: HTMLCanvasElement,
+	parameters: {
+		{name: extentPoint, class: Object, properties: {
+														{name: x, class: Number},
+														{name: y, class: Number}
+													   }
+		}
+	}
+}!*/
+
+/*@{
+	var,
+	name: normalizeCanvas,
+	class: Function,
+	return: HTMLCanvasElement,
+	parameters: {
+		{name: aCanvas, class: HTMLCanvasElement},
+		{name: getCopy, class: Boolean}
+	}
+}!*/
+
+/*@{
+	var,
+	name: getMinimumFontHeight,
+	class: Function,
+	return: Number
+}!*/
+
+/*@{
+	var,
+	name: getBlurredShadowSupport,
+	class: Function,
+	return: Boolean
+}!*/
+
+/*@{
+	var,
+	name: getDocumentPositionOf,
+	class: Function,
+	return: Point,
+	parameters: {
+		{name: aDOMelement, class: HTMLElement}
+	}
+}!*/
+
+/*@{
+	var,
+	name: copy,
+	class: Function,
+	return: CustomBlockDefinition,
+	parameters: {
+		{name: target, class: Object}
+	}
+}!*/
+
+/* \Global Functions */
+
+
+
+/* Color */
+
+/*@{
+	var,
+	name: Color,
+	class: Function,
+	return: Color,
+	parameters: {
+		{name: r, class: Number},
+		{name: g, class: Number},
+		{name: b, class: Number},
+		{name: a, class: Number}
+	}
+}!*/
+
+/*@{
+	name: Color,
+	class: Object,
+	properties: {
+		{name: r, class: Number},
+		{name: g, class: Number},
+		{name: b, class: Number},
+		{name: a, class: Number},
+		{name: toString, class: Function, return: String},
+		{name: copy, class: Function, return: Color},
+		{name: eq, class: Function, return: String, parameters: {
+																	{name: aColor, class: Color}
+																}
+		},
+		{name: hsv, class: Function, return: {{class: Array, type: Number}} },
+		{name: set_hsv, class: Function, return: Void, parameters: {
+																		{name: h, class: Number},
+																		{name: s, class: Number},
+																		{name: v, class: Number}
+																   }
+		},
+		{name: mixed, class: Function, return: Color, parameters: {
+																	{name: proportion, class: Number},
+																	{name: otherColor, class: Number}
+																  }
+		},
+		{name: darker, class: Function, return: Color, parameters: {
+																	{name: percent, class: Number}
+																   }
+		},
+		{name: lighter, class: Function, return: Color, parameters: {
+																		{name: percent, class: Number}
+																	}
+		},
+		{name: dansDarker, class: Function, return: Color}
+	}
+}!*/
+
+/* \Color */
+
+
+
+/* Point */
+
+/*@{
+	var,
+	name: Point,
+	class: Function,
+	return: Point,
+	parameters: {
+		{name: x, class: Number},
+		{name: y, class: Number}
+	}
+}!*/
+
+/*@{
+	name: Point,
+	class: Object,
+	properties: {
+		{name: x, class: Number},
+		{name: y, class: Number},
+		{name: toString, class: Function, return: String},
+		{name: copy, class: Function, return: Point},
+		{name: eq, class: Function, return: Boolean, parameters: {
+																		{name: aPoint, class: Point}
+																	 }
+		},
+		{name: lt, class: Function, return: Boolean, parameters: {
+																		{name: aPoint, class: Point}
+																	 }
+		},
+		{name: gt, class: Function, return: Boolean, parameters: {
+																		{name: aPoint, class: Point}
+																	 }
+		},
+		{name: ge, class: Function, return: Boolean, parameters: {
+																		{name: aPoint, class: Point}
+																	 }
+		},
+		{name: le, class: Function, return: Boolean, parameters: {
+																		{name: aPoint, class: Point}
+																	 }
+		},
+		{name: max, class: Function, return: Point, parameters: {
+																		{name: aPoint, class: Point}
+																	}
+		},
+		{name: min, class: Function, return: Point, parameters: {
+																		{name: aPoint, class: Point}
+																	}
+		},
+		{name: round, class: Function, return: Point},
+		{name: abs, class: Function, return: Point},
+		{name: neg, class: Function, return: Point},
+		{name: mirror, class: Function, return: Point},
+		{name: floor, class: Function, return: Point},
+		{name: ceil, class: Function, return: Point},
+		{name: add, class: Function, return: Point, parameters: {
+																		{name: other, class: Number}
+																	}
+		},
+		{name: subtract, class: Function, return: Point, parameters: {
+																			{name: other, class: Number}
+																		 }
+		},
+		{name: multiplyBy, class: Function, return: Point, parameters: {
+																				{name: other, class: Number}
+																		   }
+		},
+		{name: divideBy, class: Function, return: Point, parameters: {
+																			{name: other, class: Number}
+																		 }
+		},
+		{name: floorDivideBy, class: Function, return: Point, parameters: {
+																				{name: other, class: Number}
+																			  }
+		},
+		{name: r, class: Function, return: Number},
+		{name: degrees, class: Function, return: Number},
+		{name: theta, class: Function, return: Number},
+		{name: crossProduct, class: Function, return: Point, parameters: {
+																				{name: aPoint, class: Point}
+																			 }
+		},
+		{name: distanceTo, class: Function, return: Number, parameters: {
+																				{name: aPoint, class: Point}
+																			}
+		},
+		{name: rotate, class: Function, return: Point, parameters: {
+																			{name: direction, class: String},
+																			{name: center, class: Number}
+																	   }
+		},
+		{name: flip, class: Function, return: Point, parameters: {
+																		{name: direction, class: String},
+																		{name: center, class: Number}
+																	 }
+		},
+		{name: distanceAngle, class: Function, return: Point, parameters: {
+																					{name: dist, class: Number},
+																					{name: angle, class: Number}
+																			  }
+		},
+		{name: scaleBy, class: Function, return: Point, parameters: {
+																			{name: scalePoint, class: Number}
+																		}
+		},
+		{name: translateBy, class: Function, return: Point, parameters: {
+																				{name: deltaPoint, class: Number}
+																			}
+		},
+		{name: rotateBy, class: Function, return: Point, parameters: {
+																			{name: angle, class: Number},
+																			{name: centerPoint, class: Point}
+																		 }
+		},
+		{name: asArray, class: Function, return: {{class: Array, type: Number}} },
+		{name: corner, class: Function, return: Rectangle, parameters: {
+																				{name: cornerPoint, class: Point}
+																		   }
+		},
+		{name: rectangle, class: Function, return: Rectangle, parameters: {
+																				{name: aPoint, class: Point}
+																			  }
+		},
+		{name: extent, class: Function, return: Rectangle, parameters: {
+																				{name: aPoint, class: Point}
+																		   }
+		}
+	}
+}!*/
+
+/* \Point */
+
+
+
+/* Rectangle */
+
+/*@{
+	var,
+	name: Rectangle,
+	class: Function,
+	return: Rectangle,
+	parameters: {
+		{name: left, class: Number},
+		{name: top, class: Number},
+		{name: right, class: Number},
+		{name: bottom, class: Number}
+	}
+}!*/
+
+/*@{
+	name: Rectangle,
+	class: Object,
+	properties: {
+		{name: origin, class: Point},
+		{name: corner, class: Point},
+		{name: init, class: Function, return: Void, parameters: {
+																	{name: originPoint, class: Point},
+																	{name: cornerPoint, class: Point}
+																}
+		},
+		{name: toString, class: Function, return: String},
+		{name: copy, class: Function, return: Rectangle},
+		{name: setTo, class: Function, return: Void, parameters: {
+																	{name: left, class: Number},
+																	{name: top, class: Number},
+																	{name: right, class: Number},
+																	{name: bottom, class: Number}
+																 }
+		},
+		{name: area, class: Function, return: Number},
+		{name: bottom, class: Function, return: Number},
+		{name: bottomCenter, class: Function, return: Point},
+		{name: bottomLeft, class: Function, return: Point},
+		{name: bottomRight, class: Function, return: Point},
+		{name: boundingBox, class: Function, return: Rectangle},
+		{name: center, class: Function, return: Point},
+		{name: corners, class: Function, return: {{class: Array, type: Point}} },
+		{name: extent, class: Function, return: Point},
+		{name: height, class: Function, return: Number},
+		{name: left, class: Function, return: Number},
+		{name: leftCenter, class: Function, return: Point},
+		{name: right, class: Function, return: Number},
+		{name: rightCenter, class: Function, return: Point},
+		{name: top, class: Function, return: Number},
+		{name: topCenter, class: Function, return: Point},
+		{name: topLeft, class: Function, return: Point},
+		{name: topRight, class: Function, return: Point},
+		{name: width, class: Function, return: Number},
+		{name: position, class: Function, return: Point},
+		{name: eq, class: Function, return: Boolean, parameters: { 
+																	{name: aRect, class: Rectangle} 
+																 }
+		},
+		{name: abs, class: Function, return: Rectangle},
+		{name: insetBy, class: Function, return: Rectangle, parameters: { 
+																			{name: delta, class: Number}
+																		}
+		},
+		{name: expandBy, class: Function, return: Rectangle, parameters: {
+																			{name: delta, class: Number}
+																		 }
+		},
+		{name: growBy, class: Function, return: Rectangle, parameters: {
+																		{name: delta, class: Number}
+																	   }
+		},
+		{name: intersect, class: Function, return: Rectangle, parameters: {
+																			{name: aRect, class: Rectangle}
+																		  }
+		},	
+		{name: merge, class: Function, return: Rectangle, parameters: {
+																		{name: aRect, class: Rectangle}
+																	  }
+		},
+		{name: mergeWith, class: Function, return: Void, parameters: {
+																		{name: aRect, class: Rectangle}
+																	 }
+		},
+		{name: round, class: Function, return: Rectangle},
+		{name: spread, class: Function, return: Rectangle},
+		{name: amountToTranslateWithin, class: Function, return: Point, parameters: {
+																						{name: aRect, class: Rectangle}
+																					}
+		},	
+		{name: containsPoint, class: Function, return: Boolean, parameters: {
+																				{name: aPoint, class: Point}
+																			}
+		},
+		{name: containsRectangle, class: Function, return: Boolean, parameters: {
+																					{name: aRect, class: Rectangle}
+																				}
+		},
+		{name: intersects, class: Function, return: Boolean, parameters: { 
+																			{name: aRect, class: Rectangle}
+																		 }
+		},
+		{name: isNearTo, class: Function, return: Boolean, parameters: { 
+																			{name: aRect, class: Rectangle},
+																			{name: threshold, class: Number}
+																	   }
+		},
+		{name: scaleBy, class: Function, return: Rectangle, parameters: {
+																			{name: scale, class: Number}
+																		}
+		},
+		{name: translateBy, class: Function, return: Rectangle, parameters: {
+																				{name: factor, class: Number}
+																			}
+		},
+		{name: asArray, class: Function, return: {{class: Array, type: Number}} },
+		{name: asArray_xywh, class: Function, return: {{class: Array, type: Number}} }
+	}
+}!*/
+
+/* \Rectangle */
+
+
+
+/* Node */
+
+/*@{
+	var,
+	name: Node,
+	class: Function,
+	return: Node,
+	parameters: {
+		{name: parent, class: Node},
+		{name: childrenArray, class: Array, type: Node}
+	}
+}!*/
+
+
+//Attention! parent and children can be any class that
+//extends Node, we'll use Morph for the moment
+/*@{
+	name: Node,
+	class: Object,
+	properties: {
+		{name: init, class: Function, return: Void, parameters: {
+																	{name: parent, class: Node},
+																	{name: childrenArray, class: Array, type: Node}
+																}
+		},
+		{name: parent, class: Morph},
+		{name: children, class: Array, type: Morph},
+		{name: toString, class: Function, return: String},
+		{name: addChild, class: Function, return: Void, parameters: {
+																		{name: aNode, class: Node}
+																	}
+		},
+		{name: addChildFirst, class: Function, return: Void, parameters: {
+																			{name: aNode, class: Node}
+																		 }
+		},
+		{name: removeChild, class: Function, return: Void, parameters: {
+																		{name: aNode, class: Node}
+																	   }
+		},
+		{name: root, class: Function, return: Node},
+		{name: depth, class: Function, return: Number},
+		{name: allChildren, class: Function, return: {{class: Array, type: Node}} },
+		{name: forAllChildren, class: Function, return: Void,  parameters: {
+																			{name: aFunction, class: Function, return: Void}
+																		   }
+		},
+		{name: allLeafs, class: Function, return: {{class: Array, type: Node}} },
+		{name: allParents, class: Function, return: {{class: Array, type: Node}} },
+		{name: siblings, class: Function, return: {{class: Array, type: Node}} },
+		{name: parentThatIsA, class: Function, return: Node, parameters: {
+																			{name: constructor, class: Function, return: Void}
+																		 }
+		},
+		{name: parentThatIsAnyOf, class: Function, return: Node, parameters: {
+																				{name: constructors, class: Array, type: {{class: Function, return: Void}} }
+																			 }
+		}
+	}
+}!*/
+
+/* \Node */
+
+
+
+/* Morph */
+
+/*@{
+	var,
+	name: Morph,
+	class: Function,
+	return: Morph
+}!*/
+
+/*@{
+	name: Morph,
+	class: Node,
+	properties: {
+		{name: version, class: Boolean},
+		{name: isMorph, class: Boolean},
+		{name: bounds, class: Rectangle},
+		{name: color, class: Color},
+		{name: texture, class: String},
+		{name: cachedTexture, class: String},
+		{name: alpha, class: Number},
+		{name: isVisible, class: Boolean},
+		{name: isDraggable, class: Boolean},
+		{name: isTemplate, class: Boolean},
+		{name: acceptsDrops, class: Boolean},
+		{name: noticesTransparentClick, class: Boolean},
+		{name: fps, class: Number},
+		{name: customContextMenu, class: Object},
+		{name: lastTime, class: Date},
+		{name: onNextStep, class: Function},
+		{name: constructor, class: Function, return: Morph},
+		{name: uber, class: Node},
+		{name: trackChanges, class: Boolean},
+		{name: shadowBlur, class: Number},
+		
+		{name: image, class: HTMLCanvasElement},
+		{name: normalImage, class: HTMLCanvasElement},
+		{name: highlightImage, class: HTMLCanvasElement},
+		{name: pressImage, class: HTMLCanvasElement},
+		{name: cachedClrDark, class: Boolean},
+		{name: cachedClrBright, class: Boolean},
+		{name: cachedClr, class: Boolean},					
+		
+		{name: init, class: Function, return: Void},
+		{name: toString, class: Function, return: String},
+		{name: destroy, class: Function, return: Void},
+		{name: stepFrame, class: Function, return: Void},
+		{name: nextSteps, class: Function, return: Void, parameters: {
+																		{name: arrayOfFunctions, class: Array, type: {{class: Function, return: Void}} }
+																	 }
+		},
+		{name: step, class: Function},
+		{name: left, class: Function, return: Number},
+		{name: right, class: Function, return: Number},
+		{name: top, class: Function, return: Number},
+		{name: bottom, class: Function, return: Number},
+		{name: center, class: Function, return: Point},
+		{name: bottomCenter, class: Function, return: Point},
+		{name: bottomLeft, class: Function, return: Point},
+		{name: bottomRight, class: Function, return: Point},
+		{name: boundingBox, class: Function, return: Rectangle},
+		{name: corners, class: Function, return:  {{class: Array, type: Point}} },
+		{name: leftCenter, class: Function, return: Point},
+		{name: rightCenter, class: Function, return: Point},
+		{name: topCenter, class: Function, return: Point},
+		{name: topLeft, class: Function, return: Point},
+		{name: topRight, class: Function, return: Point},
+		{name: position, class: Function, return: Point},
+		{name: extent, class: Function, return: Point},
+		{name: width, class: Function, return: Number},
+		{name: height, class: Function, return: Number},
+		{name: fullBounds, class: Function, return: Rectangle},
+		{name: fullBoundsNoShadow, class: Function, return: Rectangle},
+		{name: visibleBounds, class: Function, return: Rectangle},
+		{name: moveBy, class: Function, return: Void, parameters: {
+																	{name: delta, class: Number}
+																  }
+		},
+		{name: silentMoveBy, class: Function, return: Void, parameters: {
+																			{name: delta, class: Number}
+																		}
+		},
+		{name: setPosition, class: Function, return: Void, parameters: {
+																				{name: aPoint, class: Point}
+																		   }
+		},
+		{name: silentSetPosition, class: Function, return: Void, parameters: {
+																					{name: aPoint, class: Point}
+																				 }
+		},
+		{name: setLeft, class: Function, return: Void, parameters: {
+																			{name: x, class: Number}
+																	   }
+		},
+		{name: setRight, class: Function, return: Void, parameters: {
+																			{name: x, class: Number}
+																		}
+		},
+		{name: setTop, class: Function, return: Void, parameters: {
+																			{name: y, class: Number}
+																	  }
+		},
+		{name: setBottom, class: Function, return: Void, parameters: {
+																			{name: y, class: Number}
+																		 }
+		},
+		{name: setCenter, class: Function, return: Void, parameters: {
+																			{name: aPoint, class: Point}
+																		 }
+		},
+		{name: setFullCenter, class: Function, return: Void, parameters: {
+																				{name: aPoint, class: Point}
+																			 }
+		},
+		{name: keepWithin, class: Function, return: Void, parameters: {
+																				{name: aMorph, class: Morph}
+																		  }
+		},
+		{name: setExtent, class: Function, return: Void, parameters: {
+																			{name: aPoint, class: Point}
+																		 }
+		},
+		{name: silentSetExtent, class: Function, return: Void, parameters: {
+																					{name: aPoint, class: Point}
+																			   }
+		},
+		{name: setWidth, class: Function, return: Void, parameters: {
+																			{name: width, class: Number}
+																		}
+		},
+		{name: silentSetWidth, class: Function, return: Void, parameters: {
+																				{name: width, class: Number}
+																			  }
+		},
+		{name: setHeight, class: Function, return: Void, parameters: {
+																			{name: height, class: Number}
+																		 }
+		},
+		{name: silentSetHeight, class: Function, return: Void, parameters: {
+																					{name: height, class: Number}
+																			   }
+		},
+		{name: setColor, class: Function, return: Void, parameters: {
+																			{name: aColor, class: Color}
+																		}
+		},
+		{name: drawNew, class: Function, return: Void},
+		{name: drawTexture, class: Function, return: Void, parameters: {
+																			{name: url, class: String}
+																		   }
+		},
+		{name: drawCachedTexture, class: Function, return: Void},
+		{name: drawOn, class: Function, return: Void, parameters: {
+																	{name: aCanvas, class: HTMLCanvasElement},
+																	{name: aRect, class: Rectangle}
+																  }
+		},
+		{name: fullDrawOn, class: Function, return: Void, parameters: {
+																		{name: aCanvas, class: HTMLCanvasElement},
+																		{name: aRect, class: Rectangle}
+																	  }
+		},
+		{name: hide, class: Function, return: Void},
+		{name: show, class: Function, return: Void},
+		{name: toggleVisibility, class: Function, return: Void},
+		{name: fullImageClassic, class: Function, return: HTMLCanvasElement},
+		{name: fullImage, class: Function, return: HTMLCanvasElement},
+		{name: shadowImage, class: Function, return: HTMLCanvasElement, parameters: {
+																						{name: off, class: Point},
+																						{name: color, class: Color}
+																					}
+		},
+		{name: shadowImageBlurred, class: Function, return: HTMLCanvasElement, parameters: {
+																							{name: off, class: Point},
+																							{name: color, class: Color}
+																						   }
+		},
+		{name: shadow, class: Function, return: ShadowMorph, parameters: {
+																			{name: off, class: Point},
+																			{name: a, class: Number},
+																			{name: color, class: Color}
+																		 }
+		},
+		{name: addShadow, class: Function, return: ShadowMorph, parameters: {
+																				{name: off, class: Point},
+																				{name: a, class: Number},
+																				{name: color, class: Color}
+																			}
+		},
+		{name: getShadow, class: Function, return: ShadowMorph},
+		{name: removeShadow, class: Function, return: Void},
+		{name: penTrails, class: Function, return: HTMLCanvasElement},
+		{name: changed, class: Function, return: Void},
+		{name: fullChanged, class: Function, return: Void},
+		{name: childChanged, class: Function, return: Void},
+		{name: world, class: Function, return: {WorldMorph, HandMorph} },
+		{name: add, class: Function, return: Void, parameters: {
+																{name: aMorph, class: Morph}
+															   }
+		},
+		{name: addBack, class: Function, return: Void, parameters: {
+																	{name: aMorph, class: Morph}
+																   }
+		},
+		{name: topMorphAt, class: Function, return: Morph, parameters: {
+																		{name: point, class: Point}
+																	   }
+		},
+		{name: topMorphSuchThat, class: Function, return: Morph, parameters: {
+																				{name: predicate, class: Function, return: Boolean}
+																			 }
+		},
+		{name: morphAt, class: Function, return: Morph, parameters: {
+																		{name: aPoint, class: Point}
+																	}
+		},
+		{name: overlappedMorphs, class: Function, return: Morph},
+		{name: getPixelColor, class: Function, return: Color, parameters: {
+																			{name: aPoint, class: Point}
+																		  }
+		},
+		{name: isTransparentAt, class: Function, return: Boolean, parameters: {
+																				{name: aPoint, class: Point}
+																			  }
+		},
+		{name: copy, class: Function, return: Morph},
+		{name: fullCopy, class: Function, return: {Morph, SpriteMorph} },
+		{name: copyRecordingReferences, class: Function, return: Morph, parameters: {
+																						{name: dict, class: Array, type: Morph}
+																					}
+		},
+		{name: updateReferences, class: Function, return: Void, parameters: {
+																				{name: dict, class: Array, type: Morph}
+																			}
+		},
+		{name: rootForGrab, class: Function, return: Node},
+		{name: wantsDropOf, class: Function, return: Boolean, parameters: {
+																			{name: aMorph, class: Morph}
+																		  }
+		},
+		{name: pickUp, class: Function, return: Boolean, parameters: {
+																		{name: wrrld, class: WorldMorph}
+																	 }
+		},
+		{name: isPickedUp, class: Function, return: Boolean},
+		{name: situation, class: Function, return: {{class: Object, properties: {
+																					{name: origin, class: Node},
+																					{name: position, class: Point}
+																				}
+												   }} 
+		},
+		{name: slideBackTo, class: Function, return: Void, parameters: {
+																		{name: situation, class: Rectangle},
+																		{name: inSteps, class: Number}
+																	   }
+		},
+		{name: nop, class: Function, return: Void},
+		{name: resize, class: Function, return: Void},
+		{name: move, class: Function, return: Void},
+		{name: hint, class: Function, return: Void, parameters: {
+																	{name: msg, class: String}
+																}
+		},
+		{name: inform, class: Function, return: Void, parameters: {
+																	{name: msg, class: String}
+																  }
+		},
+		{name: prompt, class: Function, return: Void, parameters: {
+																	{name: msg, class: String},
+																	{name: callback, class: Function, return: Void},
+																	{name: environment, class: Object},
+																	{name: defaultContents, class: String},
+																	{name: width, class: Number},
+																	{name: floorNum, class: Number},
+																	{name: ceilingNum, class: Number},
+																	{name: isRounded, class: Boolean}
+																  }
+		},
+		{name: pickColor, class: Function, return: Color, parameters: {
+																		{name: msg, class: String},
+																		{name: callback, class: Function, return: Void},
+																		{name: environment, class: Object},
+																		{name: defaultContents, class: String}
+																	  }
+		},
+		{name: inspect, class: Function, return: Void, parameters: {
+																	{name: anotherObject, class: Object}
+																   }
+		},
+		{name: contextMenu, class: Function, return: MenuMorph},
+		{name: hierarchyMenu, class: Function, return: MenuMorph},
+		{name: developersMenu, class: Function, return: MenuMorph},
+		{name: userMenu, class: Function, return: null},
+		{name: setAlphaScaled, class: Function, return: Void, parameters: {
+																			{name: alpha, class: Number}
+																		  }
+		},
+		{name: attach, class: Function, return: Void},
+		{name: toggleIsDraggable, class: Function, return: Void},
+		{name: colorSetters, class: Function, return: { {class: Array, type: String} } },
+		{name: numericalSetters, class: Function, return: {{class: Array, type: String}} },
+		{name: allEntryFields, class: Function, return: { {class: Array, type: Node} } },
+		{name: nextEntryField, class: Function, return: Node, parameters: {
+																			{name: current, type: Node}
+																		  }
+		},
+		{name: previousEntryField, class: Function, return: Node, parameters: {
+																				{name: current, type: Node}
+																			  }
+		},
+		{name: tab, class: Function, return: Void, parameters: {
+																{name: editField, type: Node}
+															   }
+		},
+		{name: backTab, class: Function, return: Void, parameters: {
+																	{name: editField, type: Node}
+																   }
+		},
+		{name: nextTab, class: Function, return: Void, parameters: {
+																	{name: editField, type: Node}
+																   }
+		},
+		{name: previousTab, class: Function, return: Void, parameters: {
+																		{name: editField, type: Node}
+																	   }
+		},
+		{name: escalateEvent, class: Function, return: Void, parameters {
+																			{name: functionName, class: String},
+																			{name: arg, class: Object}
+																		}
+		},
+		{name: evaluateString, class: Function, return: Void, parameters {
+																			{name: code, class: String}
+																		 }
+		},
+		{name: isTouching, class: Function, return: Boolean, parameters {
+																			{name: otherMorph, class: Morph}
+																		}
+		},
+		{name: overlappingImage, class: Function, return: HTMLCanvasElement, parameters {
+																							{name: otherMorph, class: Morph}
+																						}
+		}
+	}
+}!*/
+
+/* \Morph */
+
+
+
+/* ShadowMorph */
+
+/*@
+{
+	var,
+	name: ShadowMorph,
+	class: Function,
+	return: ShadowMorph
+}
+!*/
+
+/*@
+{
+	name: ShadowMorph,
+	class: Morph,
+	{
+		{name: constructor, class: Function, return: ShadowMorph},
+		{name: uber, class: Morph},
+		
+		{name: topMorphAt, class: Function, return: null}
+	}
+}
+!*/
+
+/* \ShadowMorph */
+
+
+
+/* HandleMorph */
+
+/*@
+{
+	var,
+	name: HandleMorph,
+	class: Function,
+	return: HandleMorph
+}
+!*/
+
+/*@
+{
+	name: HandleMorph,
+	class: Joker
+}
+!*/
+
+/* \HandleMorph */
+
+
+
+/* PenMorph */
+
+/*@
+{
+	var,
+	name: PenMorph,
+	class: Function,
+	return: PenMorph
+}
+!*/
+
+/*@
+{
+	name: PenMorph,
+	class: Morph,
+	properties: {
+					{name: constructor, class: Function, return, PenMorph},
+					{name: uber, class: Morph},
+					{name: init, class: Function},
+					
+					{name: isWarped, class: Boolean},
+					{name: heading, class: Number},
+					{name: isDown, class: Boolean},
+					{name: size, class: Number},
+					{name: wantsRedraw, class: Boolean},
+					{name: penPoint, class: String},
+					{name: penBounds, class: Rectangle},
+					
+					{name: changed, class: Function},
+					{name: drawNew, class: Function, parameters: {
+																		{name: facing, class: Number}
+																	}
+					},
+					{name: setHeading, class: Function, parameters: {
+																			{name: degrees, class: String}
+																	   }
+					},
+					{name: drawLine, class: Function, parameters: {
+																		{name: start, class: Point},
+																		{name: dest, class: Point}
+																	 }
+					},
+					{name: turn, class: Function, parameters: {
+																	{name: degrees, class: String}
+															     }
+					},
+					{name: forward, class: Function, parameters: {
+																		{name: steps, class: String}
+															        }
+					},
+					{name: down, class: Function},
+					{name: up, class: Function},
+					{name: clear, class: Function},
+					{name: startWarp, class: Function},
+					{name: endWarp, class: Function},
+					{name: warp, class: Function},
+					{name: warpOp, class: Function, parameters: {
+																		{name: selector, class: String},
+																		{name: argsArray, class: Array, type: Object}
+																   }
+					}
+				 }
+}
+!*/
+
+
+/* \PenMorph */
+
+
+
+/* ColorPaletteMorph */
+
+/*@
+{
+	var,
+	name: ColorPaletteMorph,
+	class: Function,
+	return: ColorPaletteMorph
+}
+!*/
+
+/*@
+{
+	name: ColorPaletteMorph,
+	class: Joker
+}
+!*/
+
+/* \ColorPaletteMorph */
+
+
+
+/* GrayPaletteMorph */
+
+/*@
+{
+	var,
+	name: GrayPaletteMorph,
+	class: Function,
+	return: GrayPaletteMorph
+}
+!*/
+
+/*@
+{
+	name: GrayPaletteMorph,
+	class: Joker
+}
+!*/
+
+/* \GrayPaletteMorph */
+
+
+
+/* ColorPickerMorph */
+
+/*@
+{
+	var,
+	name: ColorPickerMorph,
+	class: Function,
+	return: ColorPickerMorph
+}
+!*/
+
+/*@
+{
+	name: ColorPickerMorph,
+	class: Joker
+}
+!*/
+
+/* \ColorPickerMorph */
+
+
+
+/* BlinkerMorph */
+
+/*@
+{
+	var,
+	name: BlinkerMorph,
+	class: Function,
+	return: BlinkerMorph
+}
+!*/
+
+/*@
+{
+	name: BlinkerMorph,
+	class: Joker
+}
+!*/
+
+/* \BlinkerMorph */
+
+
+
+/* CursorMorph */
+
+/*@
+{
+	var,
+	name: CursorMorph,
+	class: Function,
+	return: CursorMorph
+}
+!*/
+
+/*@
+{
+	name: CursorMorph,
+	class: Joker
+}
+!*/
+
+/* \CursorMorph */
+
+
+
+/* BoxMorph */
+
+/*
+ommitted methods:
+	- developersMenu
+	- setBorderWidth
+	- setBorderColor
+	- setCornerSize
+	- colorSetters
+	- numericalSetters
+*/
+
+/*@{
+	var,
+	name: BoxMorph,
+	class: Function,
+	return: BoxMorph,
+	parameters: {
+		{name: edge, class: Number},
+		{name: border, class: Number},
+		{name: borderColor, class: Color}
+	}
+}!*/
+
+/*@{
+	name: BoxMorph,
+	class: Morph,
+	properties: {
+		{name: constructor, class: Function, return: BoxMorph},
+		{name: uber, class: Morph},
+		{name: init, class: Function, parameters: {
+													{name: edge, class: Number},
+													{name: border, class: Number},
+													{name: borderColor, class: Color}
+												  }
+		},
+		
+		{name: edge, class: Number},
+		{name: border, class: Number},
+		{name: borderColor, class: Color},
+		
+		{name: drawNew, class: Function, return: null},
+		{name: outlinePath, class: Function, parameters: {
+																{name: context, class: CanvasRenderingContext2D},
+																{name: radius, class: Number},
+																{name: inset, class: Number}
+															}
+		}
+	}
+}!*/
+
+/* \BoxMorph */
+
+
+
+/* SpeechBubbleMorph */
+
+/*@{
+	var,
+	name: SpeechBubbleMorph,
+	class: Function,
+	return: SpeechBubbleMorph,
+	parameters: {
+		{name: contents, class: String},
+		{name: color, class: Color},
+		{name: edge, class: Number},
+		{name: border, class: Number},
+		{name: borderColor, class: Color},
+		{name: padding, class: Number},
+		{name: isThought, class: Boolean}
+	}
+}!*/
+
+/*@{
+	name: SpeechBubbleMorph,
+	class: BoxMorph,
+	properties:
+	{
+		{name: contentsMorph, class: {Morph, Boolean, Costume, HTMLCanvasElement, List, Context, String, TableFrameMorph} },
+	
+		{name: constructor, class: Function, return: SpeechBubbleMorph},
+		{name: uber, class: BoxMorph},
+		{name: init, class: Function, parameters: {
+														{name: contents, class: String},
+														{name: color, class: Color},
+														{name: edge, class: Number},
+														{name: border, class: Number},
+														{name: borderColor, class: Color},
+														{name: padding, class: Number},
+														{name: isThought, class: Boolean}
+													 }
+		},
+		
+		{name: isPointingRight, class: Boolean},
+		{name: contents, class: {Morph, Boolean, Costume, HTMLCanvasElement, List, Context, String, TableFrameMorph} },
+		{name: padding, class: Number},
+		{name: isThought, class: Boolean}
+		{name: isClickable, class: Boolean},
+		
+		
+		{name: popUp, class: Function, parameters: {
+														{name: world, class: worldMorph},
+														{name: pos, class: Point},
+														{name: isClickable, class: Boolean}
+													  }
+		},
+		{name: drawNew, class: Function},
+		{name: outlinePath, class: Function, parameters: {
+																{name: context, class: CanvasRenderingContext2D},
+																{name: radius, class: Number},
+																{name: inset, class: Number}
+															}
+		},
+		{name: shadowImage, class: Function, return: HTMLCanvasElement, parameters: {
+																				{name: off, class: Point},
+																				{name: color, class: Color}
+																			 }
+		},
+		{name: shadowImageBlurred, class: Function, return: HTMLCanvasElement, parameters: {
+																						{name: off, class: Point},
+																						{name: color, class: Color}
+																					}
+		},
+		{name: fixLayout, class: Function}
+	}
+}
+!*/
+
+/* \SpeechBubbleMorph */
+
+
+
+/* CircleBoxMorph */
+
+/*@
+{
+	var,
+	name: CircleBoxMorph,
+	class: Function,
+	return: CircleBoxMorph,
+	parameters:
+	{
+		{name: orientation, class: String}
+	}
+}
+!*/
+
+/*@
+{
+	name: CircleBoxMorph,
+	class: Morph,
+	properties: 
+	{
+		{name: constructor, class: Function, return: CircleBoxMorph},
+		{name: uber, class: Morph},
+		{name: init, class: Function, parameters: {
+														{name: orientation, class: String}
+													 }
+		},
+		
+		{name: orientation, class: String},
+		{name: autoOrient, class: Boolean},
+		
+		{name: autoOrientation, class: Function},
+		{name: drawNew, class: Function},
+		
+		{name: developersMenu, class: Function, return: MenuMorph},
+		{name: toggleOrientation, class: Function}
+	}
+}
+!*/
+
+/* \CircleBoxMorph */
+
+
+
+/* SliderButtonMorph */
+
+/*@
+{
+	var,
+	name: SliderButtonMorph,
+	class: Function,
+	return: SliderButtonMorph,
+	parameters:
+	{
+		{name: orientation, class: String}
+	}
+}
+!*/
+
+/*@
+{
+	name: SliderButtonMorph,
+	class: CircleBoxMorph,
+	properties:
+	{
+		{name: constructor, class: SliderButtonMorph},
+		{name: uber, class: CircleBoxMorph},
+		{name: init, class: Function},
+		
+		{name: highlightColor, class: Color},
+		{name: pressColor, class: Color},
+		{name: is3D, class: Boolean},
+		{name: hasMiddleDip, class: Boolean},
+		
+		{name: autoOrientation, class: Function},
+		{name: drawNew, class: Function},
+		{name: drawEdges, class: Function},
+		
+		{name: mouseEnter, class: Function},
+		{name: mouseLeave, class: Function},
+		{name: mouseDownLeft, class: Function},
+		{name: mouseClickLeft, class: Function},
+		{name: mouseMove, class: Function}
+	}
+}
+!*/
+
+/* \SliderButtonMorph */
+
+
+
+/* SliderMorph */
+
+/*@
+{
+	var,
+	name: SliderMorph,
+	class: Function,
+	return: SliderMorph,
+	parameters:
+	{
+		{name: start, class: Number},
+		{name: stop, class: Number},
+		{name: value, class: Number},
+		{name: size, class: Number},
+		{name: orientation, class: String},
+		{name: color, class: Color}
+	}
+}
+!*/
+
+/*@
+{
+	name: SliderMorph,
+	class: CircleBoxMorph,
+	properties:
+	{
+		{name: constructor, class: SliderMorph},
+		{name: uber, class: CircleBoxMorph},
+		{name: init, class: Function},
+	
+		{name: target, class: Joker},
+		{name: action, class: Joker},
+		{name: start, class: Number},
+		{name: stop, class: Number},
+		{name: value, class: Number},
+		{name: size, class: Number},
+		{name: offset, class: Joker},
+		{name: button, class: SliderButtonMorph},
+		
+		{name: autoOrientation, class: Function},
+		{name: rangeSize, class: Function, return: Number},
+		{name: ratio, class: Function, return: Number},
+		{name: unitSize, class: Function, return: Number},
+		{name: drawNew, class: Function},
+		{name: updateValue, class: Function},
+		{name: updateTarget, class: Function},
+		
+		{name: developersMenu, class: Function, return: MenuMorph},
+		{name: showValue, class: Function},
+		{name: userSetStart, class: Function},
+		{name: setStart, class: Function, parameters: {
+															{name: num, class: Number},
+															{name: noUpdate, class: Boolean},
+														 }
+		},
+		{name: setStop, class: Function, parameters: {
+															{name: num, class: Number},
+															{name: noUpdate, class: Boolean},
+														}
+		},
+		{name: setSize, class: Function, parameters: {
+															{name: num, class: Number},
+															{name: noUpdate, class: Boolean},
+														}
+		},
+		{name: setTarget, class: Function},
+		{name: setTargetSetter, class: Function},
+		{name: numericalSetters, class: Function, return: {{class: Array, type: String}} },
+		
+		{name: step, class: Function},
+		{name: mouseDownLeft, class: Function, parameters: {
+																{name: pos, class: Point}
+															  }
+		}
+	}
+}
+!*/
+
+/* \SliderMorph */
+
+
+
+/* InspectorMorph */
+
+/*@
+{
+	var,
+	name: InspectorMorph,
+	class: Function,
+	return: InspectorMorph
+}
+!*/
+
+/*@
+{
+	name: InspectorMorph,
+	class: Joker
+}
+!*/
+
+/* \InspectorMorph */
+
+
+
+/* MenuMorph */
+
+/*@
+{
+	var,
+	name: MenuMorph,
+	class: Function,
+	return: MenuMorph
+}
+!*/
+
+/*@
+{
+	name: MenuMorph,
+	class: Joker
+}
+!*/
+
+/* \MenuMorph */
+
+
+
+/* StringMorph */
+
+/*@
+{
+	var,
+	name: StringMorph,
+	class: Function,
+	return: StringMorph
+}
+!*/
+
+/*@
+{
+	name: StringMorph,
+	class: Morph,
+	properties:
+	{
+		{name: constructor, class: Function, return: StringMorph},
+		{name: uber, class: Morph},
+		{name: init, class: Function},
+		
+		{name: text, class: String},
+		{name: fontSize, class: Number},
+		{name: fontName, class: String},
+		{name: fontStyle, class: String},
+		{name: isBold, class: Boolean},
+		{name: isItalic, class: Boolean},
+		{name: isEditable, class: Boolean},
+		{name: isNumeric, class: Boolean},
+		{name: isPassword, class: Boolean},
+		{name: shadowOffset, class: Point},
+		{name: shadowColor, class: Color},
+		{name: isShowingBlanks, class: Boolean},
+		{name: blanksColor, class: Color},
+		{name: isScrollable, class: Boolean},
+		{name: currentlySelecting, class: Boolean},
+		{name: startMark, class: Number},
+		{name: endMark, class: Number},
+		{name: markedTextColor, class: Color},
+		{name: markedBackgoundColor, class: Color},
+		{name: color, class: Color},
+		{name: noticesTransparentClick, class: Boolean},
+		
+		{name: toString, class: Function, return: String},
+		{name: password, class: Function, return: String, parameters: {
+																			{name: letter, class: String},
+																			{name: length, class: Number}
+																		  }
+		},
+		{name: font, class: Function, return: String},
+		{name: drawNew, class: Function},
+		{name: renderWithBlanks, class: Function, parameters: {
+																	{name: context, class: CanvasRenderingContext2D},
+																	{name: startX, class: Number},
+																	{name: y, class: Number}
+																 }
+		},
+		{name: slot, class: Function, return: Point, parameters: {
+																		{name: slot, class: Number}
+																	 }
+		},
+		{name: slotAt, class: Function, return: Number, parameters: {
+																			{name: aPoint, class: Point}
+																	   }
+		},
+		{name: upFrom, class: Function, return: Number, parameters: {
+																			{name: slot, class: Number}
+																		}
+		},
+		{name: downFrom, class: Function, return: Number, parameters: {
+																			{name: slot, class: Number}
+																	      }
+		},
+		{name: startOfLine, class: Function, return: Number},
+		{name: endOfLine, class: Function, return: Number},
+		{name: rawHeight, class: Function, return: Number},
+		{name: developersMenu, class: Function, return: MenuMorph},
+		
+		{name: toggleIsDraggable, class: Function},
+		{name: toggleShowBlanks, class: Function},
+		{name: toggleWeight, class: Function},
+		{name: toggleItalic, class: Function},
+		{name: toggleIsPassword, class: Function},
+		{name: setSerif, class: Function},
+		{name: setSansSerif, class: Function},
+		{name: setFontSize, class: Function, parameters: {
+																{name: size, class: {Number, String} }
+															}
+		},
+		{name: setText, class: Function, parameters: {
+															{name: size, class: Number}
+														}
+		},
+		{name: numericalSetters, class: Function, return: {{class: Array, type: String}} },
+		
+		{name: edit, class: Function},
+		{name: selection, class: Function, return: String},
+		{name: selectionStartSlot, class: Function, return: Number},
+		{name: clearSelection, class: Function},
+		{name: deleteSelection, class: Function},
+		{name: selectAll, class: Function},
+		{name: mouseDownLeft, class: Function},
+		{name: mouseClickLeft, class: Function, parameters: {
+																	{name: pos, class: Number}
+															   }
+		},
+		{name: enableSelecting, class: Function},
+		{name: disableSelecting, class: Function}	
+	}	
+}
+!*/
+
+/* \StringMorph */
+
+
+
+/* TextMorph */
+
+/*@
+{
+	var,
+	name: TextMorph,
+	class: Function,
+	return: TextMorph,
+	parameters:
+	{
+		{name: text, class: String},
+		{name: fontSize, class: Number},
+		{name: fontStyle, class: String},
+		{name: bold, class: Boolean},
+		{name: italic, class: Boolean},
+		{name: alignment, class: String},
+		{name: width, class: Number},
+		{name: fontName, class: String},
+		{name: shadowOffset, class: Point},
+		{name: shadowColor, class: Color}
+	}
+}
+!*/
+
+/*@
+{
+	name: TextMorph,
+	class: Morph,
+	properties:
+	{
+		{name: constructor, class: Function, TextMorph},
+		{name: uber, class: Morph},
+		{name: init, class: Function, parameters: {
+														{name: text, class: String},
+														{name: fontSize, class: Number},
+														{name: fontStyle, class: String},
+														{name: bold, class: Boolean},
+														{name: italic, class: Boolean},
+														{name: alignment, class: String},
+														{name: width, class: Number},
+														{name: fontName, class: String},
+														{name: shadowOffset, class: Point},
+														{name: shadowColor, class: Color}
+													 }
+		},
+		
+		{name: text, class: String},
+		{name: words, class: Array, type: Joker},
+		{name: lines, class: Array, type: Joker},
+		{name: lineSlots, class: Array, type: Joker},
+		{name: fontSize, class: Number},
+		{name: fontName, class: String},
+		{name: isBold, class: Boolean},
+		{name: isItalic, class: Boolean},
+		{name: alignment, class: String},
+		{name: shadowOffset, class: Point},
+		{name: shadowColor, class: Color},
+		{name: maxWidth, class: Number},
+		{name: maxLineWidth, class: Number},
+		{name: backgroundColor, class: Color},
+		{name: isEditable, class: Boolean},
+		
+		{name: isEditable, class: Joker},
+		
+		{name: isScrollable, class: Boolean},
+		{name: currentlySelecting, class: Boolean},
+		{name: startMark, class: Number},
+		{name: endMark, class: Number},
+		{name: markedTextColor, class: Color},
+		{name: markedBackgoundColor, class: Color},
+		
+		{name: toString, class: Function, return: String},
+		{name: parse, class: Function},
+		{name: drawNew, class: Function},
+		{name: setExtent, class: Function, parameters: {
+															{name: aPoint, class: Point}
+														  }
+		},
+		{name: columnRow, class: Function, return: Point, parameters: {
+																			{name: slot, class: Number}
+																		  }
+		},
+		{name: slotPosition, class: Function, return: Point, parameters: {
+																				{name: slot, class: Number}
+																			 }
+		},
+		{name: slotAt, class: Function, return: Number, parameters: {
+																			{name: aPoint, class: Point}
+																		}
+		},
+		{name: upFrom, class: Function, return: Number, parameters: {
+																			{name: slot, class: Number}
+																		}
+		},
+		{name: downFrom, class: Function, return: Number, parameters: {
+																			{name: slot, class: Number}
+																		  }
+		},
+		{name: startOfLine, class: Function, return: Number, parameters: {
+																				{name: slot, class: Number}
+																			 }
+		},
+		{name: endOfLine, class: Function, return: Number, parameters: {
+																				{name: slot, class: Number}
+																		   }
+		},
+		{name: edit, class: Function},
+		{name: selection, class: Function, return: String},
+		{name: selectionStartSlot, class: Function, return: Number},
+		{name: clearSelection, class: Function},
+		{name: deleteSelection, class: Function},
+		{name: selectAll, class: Function},
+		{name: mouseDownLeft, class: Function},
+		{name: mouseClickLeft, class: Function},
+		{name: enableSelecting, class: Function},
+		{name: disableSelecting, class: Function},
+		{name: selectAllAndEdit, class: Function},
+		{name: selectionStartSlot, class: Function, return: MenuMorph},
+		{name: setAlignmentToLeft, class: Function},
+		{name: setAlignmentToRight, class: Function},
+		{name: setAlignmentToCenter, class: Function},
+		{name: toggleIsDraggable, class: Function},
+		{name: toggleWeight, class: Function},
+		{name: toggleItalic, class: Function},
+		{name: setSerif, class: Function},
+		{name: setSansSerif, class: Function},
+		{name: setText, class: Function},
+		{name: setFontSize, class: Function},
+		{name: numericalSetters, class: Function, return: {{class: Array, type: String}} },
+		
+		{name: evaluationMenu, class: Function, return: MenuMorph},
+		{name: setReceiver, class: Function, parameters: {
+																{name: obj, class: Joker}
+															}
+		},
+		{name: doIt, class: Function},
+		{name: showIt, class: Function},
+		{name: inspectIt, class: Function}
+	}
+}
+!*/
+
+/* \TextMorph */
+
+
+
+/* TriggerMorph */
+
+/*@
+{
+	var,
+	name: TriggerMorph,
+	class: Function,
+	return: TriggerMorph
+}
+!*/
+
+/*@
+{
+	name: TriggerMorph,
+	class: Morph,
+	properties:
+	{
+		{name: constructor, class: Function, return TriggerMorph},
+		{name: uber, class: Morph},
+		{name: init, class: Function},
+		
+		{name: target, class: Function},
+		{name: action, class: {Function, String} },
+		{name: doubleClickAction, class: {Function, String} },
+		{name: environment, class: Object},
+		{name: labelString, class: String},
+		{name: label, class: StringMorph},
+		{name: hint, class: {String, Function} },
+		{name: fontSize, class: Number},
+		{name: fontStyle, class: String},
+		{name: highlightColor, class: Color},
+		{name: pressColor, class: Color},
+		{name: labelColor, class: Color},
+		{name: labelBold, class: Boolean},
+		{name: labelItalic, class: Boolean},
+		{name: color, class: Color},
+		
+		{name: drawNew, class: Function},
+		{name: createBackgrounds, class: Function},
+		{name: createLabel, class: Function},
+		
+		{name: trigger, class: Function},
+		{name: triggerDoubleClick, class: Function},
+		
+		{name: mouseEnter, class: Function},
+		{name: mouseLeave, class: Function},
+		{name: mouseDownLeft, class: Function},
+		{name: mouseClickLeft, class: Function},
+		{name: mouseDoubleClick, class: Function},
+		{name: rootForGrab, class: Function, return: Node},
+		
+		{name: bubbleHelp, class: Function, properties: {
+																{name: contents, class: String}
+														   }
+		},
+		{name: popUpbubbleHelp, class: Function, properties: {
+																	{name: contents, class: String}
+																}
+		}
+	}
+}
+!*/
+
+/* \TriggerMorph */
+
+
+
+/* MenuItemMorph */
+
+/*@
+{
+	var,
+	name: MenuItemMorph,
+	class: Function,
+	return: MenuItemMorph
+}
+!*/
+
+/*@
+{
+	name: MenuItemMorph,
+	class: Joker
+}
+!*/
+
+/* \MenuItemMorph */
+
+
+
+/* FrameMorph */
+
+/*@{
+	var,
+	name: FrameMorph,
+	class: Function,
+	return: FrameMorph,
+	parameters: {
+		{name: aScrollFrame, class: ScrollFrameMorph}
+	}
+}!*/
+
+/*@{
+	name: FrameMorph,
+	class: Morph,
+	properties: {
+		{name: children, class: Array, type: {CellMorph, StringMorph, PushButtonMorph} },
+
+		{name: constructor, class: Function, return: FrameMorph},
+		{name: uber, class: Morph},
+		{name: init, class: Function, return: Void, parameters: {
+																	{name: aScrollFrame, class: ScrollFrameMorph}
+																}
+		},
+		
+		{name: scrollFrame, class: ScrollFrameMorph},
+		
+		{name: fullBounds, class: Function, return: Rectangle},
+		{name: fullImage, class: Function, return: HTMLCanvasElement},
+		{name: fullDrawOn, class: Function, return: null, parameters: {
+																		{name: aCanvas, class: HTMLCanvasElement},
+																		{name: aRect, class: Rectangle}
+																	  }
+		},
+		{name: topMorphAt, class: Function, return: FrameMorph, parameters: {
+																				{name: point, class: Point}
+																			}
+		},
+		{name: submorphBounds, class: Function, return: Rectangle},
+		{name: keepInScrollFrame, class: Function, return: null},
+		{name: adjustBounds, class: Function, return: null},
+		{name: reactToDropOf, class: Function},
+		{name: reactToGrabOf, class: Function},
+		{name: developersMenu, class: Function, return: MenuMorph},
+		{name: keepAllSubmorphsWithin, class: Function}
+	}
+}!*/
+
+/* \FrameMorph */
+
+
+
+/* ScrollFrameMorph */
+
+/*@{
+	var,
+	name: ScrollFrameMorph,
+	class: Function,
+	return: ScrollFrameMorph,
+	parameters: {
+		{name: scroller, class: FrameMorph},
+		{name: size, class: Number},
+		{name: sliderColor, class: Color}
+	}
+}!*/
+
+/*@{
+	name: ScrollFrameMorph,
+	class: FrameMorph,
+	properties: {
+		{name: constructor, class: Function, return: ScrollFrameMorph},
+		{name: uber, class: FrameMorph},
+		{name: init, class: Function},
+		
+		{name: scrollBarSize, class: Number},
+		{name: autoScrollTrigger, class: Joker},
+		{name: isScrollingByDragging, class: Boolean},
+		{name: hasVelocity, class: Boolean},
+		{name: padding, class: Number},
+		{name: growth, class: Number},
+		{name: isTextLineWrapping, class: Boolean},
+		{name: contents, class: FrameMorph},
+		{name: hBar, class: SliderMorph},
+		{name: vBar, class: SliderMorph}
+		
+		{name: adjustScrollBars, class: Function},
+		{name: addContents, class: Function, parameters: {
+																{name: aMorph, class: Morph}
+															}
+		},
+		{name: setContents, class: Function, parameters: {
+																{name: aMorph, class: Morph}
+															}
+		},
+		{name: setExtent, class: Function, parameters: {
+															{name: aMorph, class: Point}
+														  }
+		},
+		
+		{name: scrollX, class: Function, parameters: {
+															{name: steps, class: Number}
+														}
+		},
+		{name: scrollY, class: Function, parameters: {
+															{name: steps, class: Number}
+														}
+		},
+		{name: step, class: Function},
+		{name: mouseDownLeft, class: Function, parameters: {
+																{name: pos, class: Point}
+															  }
+		},
+		{name: startAutoScrolling, class: Function, return: null},
+		{name: autoScroll, class: Function, return: null},
+		{name: scrollCursorIntoView, class: Function, parameters: {
+																	{name: morph, class: Morph}
+																  }
+		},
+		{name: mouseScroll, class: Function, parameters: {
+															{name: y, class: Number},
+															{name: x, class: Number}
+														 }
+		},
+		{name: updateReferences, class: Function, parameters: {
+																{name: map, class: Joker}
+															  }
+		},
+		
+		{name: developersMenu, class: Function, return: MenuMorph},
+		{name: toggleTextLineWrapping, class: Function}	
+	}
+}!*/
+
+/* \ScrollFrameMorph */
+
+
+
+/* ListMorph */
+
+/*@{
+	var,
+	name: ListMorph,
+	class: Function,
+	return: ListMorph,
+	parameters: {
+		{name: elements, class: Array, type: Joker},
+		{name: labelGetter, class: Function, return: String},
+		{name: format, class: Array, type: Joker},
+		{name: doubleClickAction, class: Function}
+	}
+}!*/
+
+/*@{
+	name: ListMorph,
+	class: ScrollFrameMorph,
+	properties:
+	{
+		{name: constructor, class: Function, return: ListMorph},
+		{name: uber, class: ScrollFrameMorph},
+		{name: init, class: Function},
+		
+		{name: elements, class: Array, type: Joker},
+		{name: labelGetter, class: Function, return: String},
+		{name: format, class: Array, type: Joker},
+		{name: doubleClickAction, class: Function},
+		{name: listContents, class: Joker},
+		{name: selected, class: Joker},
+		{name: active, class: Joker},
+		{name: action, class: Joker},
+		
+		{name: buildArrayContents, class: Function},
+		{name: select, class: Function, parameters: {
+														{name: item, class: Joker},
+														{name: trigger, class: Joker}
+													}
+		},
+		{name: setExtent, class: Function, parameters: {
+														{name: aPoint, class: Point}
+													   }
+		},
+		{name: activeIndex, class: Function, return: Joker},
+		{name: activateIndex, class: Function, parameters: {
+															{name: idx, class: Number}
+														   }
+		}
+	}
+}!*/
+
+/* \ListMorph */
+
+
+
+/* StringFieldMorph */
+
+/*@{
+	var,
+	name: StringFieldMorph,
+	class: Function,
+	return: StringFieldMorph,
+	parameters: {
+		{name: defaultContents, class: String},
+		{name: minWidth, class: Number},
+		{name: fontSize, class: Number},
+		{name: fontStyle, class: String},
+		{name: bold, class: Boolean},
+		{name: italic, class: Boolean},
+		{name: isNumeric, class: Boolean}
+	}
+}!*/
+
+/*@{
+	name: StringFieldMorph,
+	class: FrameMorph,
+	properties:
+	{
+		{name: constructor, class: Function, return: StringFieldMorph},
+		{name: uber, class: FrameMorph},
+		{name: init, class: Function},
+
+		{name: defaultContents, class: String},
+		{name: minWidth, class: Number},
+		{name: fontSize, class: Number},
+		{name: fontStyle, class: String},
+		{name: isBold, class: Boolean},
+		{name: isItalic, class: Boolean},
+		{name: isNumeric, class: Boolean},
+		{name: text, class: StringMorph},
+		
+		{name: drawNew, class: Function},
+		{name: string, class: Function, return: String},
+		{name: mouseClickLeft, class: Function, parameters: {
+																{name: pos, class: Joker}
+															}
+		}
+	}
+}!*/
+
+/* \StringFieldMorph */
+
+
+
+/* HandMorph */
+
+/*@{
+	var,
+	name: HandMorph,
+	class: Function,
+	return: HandMorph,
+	parameters: {
+		{name: aWorld, class: WorldMorph}
+	}
+}!*/
+
+/*@{
+	name: HandMorph,
+	class: Morph,
+	properties: 
+	{
+		{name: constructor, class: Function, return: HandMorph},
+		{name: uber, class: Morph},
+		{name: init, class: Function, parameters: {
+														{name: aWorld, class: WorldMorph}
+													 }
+		},
+		
+		{name: world, class: WorldMorph},
+		{name: mouseButton, class: Joker},
+		{name: mouseOverArray, class: Joker},
+		{name: morphToGrab, class: Joker},
+		{name: grabOrigin, class: Joker},
+		{name: temporaries, class: Joker},
+		{name: touchHoldTimeout, class: Joker},
+		{name: contextMenuEnabled, class: Boolean},
+		
+		{name: changed, class: Function},
+		{name: fullChanged, class: Function},
+		{name: morphAtPointer, class: Function, return: WorldMorph},
+		{name: allMorphsAtPointer, class: Function, return: Boolean},
+		
+		{name: dropTargetFor, class: Function, return: Morph, parameters: {
+																					{name: aMorph, class: Morph}
+																				}
+		},
+		{name: grab, class: Function, return: null, parameters: {
+																		{name: aMorph, class: Morph}
+																	}
+		},
+		{name: drop, class: Function, return: null},
+		
+		{name: grab, class: Function, parameters: {
+														{name: event, class: Event}
+													 }
+		},
+		{name: processTouchStart, class: Function, parameters: {
+																	{name: event, class: Event}
+																  }
+		},
+		{name: processTouchMove, class: Function, parameters: {
+																	{name: event, class: Event}
+																 }
+		},
+		{name: processTouchEnd, class: Function, parameters: {
+																	{name: event, class: Event}
+																}
+		},
+		{name: processMouseUp, class: Function},
+		{name: processDoubleClick, class: Function},
+		{name: processMouseMove, class: Function, parameters: {
+																	{name: event, class: Event}
+																 }
+		},
+		{name: processMouseScroll, class: Function, parameters: {
+																		{name: event, class: Event}
+																   }
+		},
+		
+		{name: processDrop, class: Function, parameters: {
+																{name: event, class: Event}
+															}
+		},
+		{name: destroyTemporaries, class: Function}
+	}
+}!*/
+
+/* \HandMorph */
+
+
+
+/* WorldMorph */
+
+/*@{
+	var,
+	name: WorldMorph,
+	class: Function,
+	return: WorldMorph,
+	parameters: {
+		{name: aCanvas, class: HTMLCanvasElement},
+		{name: fillPage, class: Boolean}
+	}
+}!*/
+
+/*@{
+	name: WorldMorph,
+	class: FrameMorph,
+	properties: 
+	{
+		{name: constructor, class: Function, return: WorldMorph},
+		{name: uber, class: FrameMorph},
+		{name: init, class: Function},
+		
+		{name: currentKey, class: Joker},
+		{name: worldCanvas, class: HTMLCanvasElement},
+		{name: stamp, class: Number},
+		{name: useFillPage, class: Boolean},
+		{name: isDevMode, class: Boolean},
+		{name: broken, class: Array, type: Rectangle},
+		{name: hand, class: HandMorph},
+		{name: keyboardReceiver, class: Joker},
+		{name: lastEditedText, class: Joker},
+		{name: cursor, class: Joker},
+		{name: activeMenu, class: Joker},
+		{name: activeHandle, class: Joker},
+		{name: virtualKeyboard, class: Joker},
+		
+		{name: brokenFor, class: Function, return: {{class: Array, type: Rectangle}}, parameters: {
+																									{name: aMorph, class: Morph}
+																								  }
+		},
+		{name: fullDrawOn, class: Function, parameters: {
+															{name: aCanvas, class: HTMLCanvasElement},
+															{name: aRect, class: Rectangle}
+														}
+		},
+		{name: updateBroken, class: Function},
+		{name: condenseDamages, class: Function},
+		{name: doOneCycle, class: Function},
+		{name: fillPage, class: Function},
+		
+		{name: getGlobalPixelColor, class: Function, return: Color},
+		
+		{name: initVirtualKeyboard, class: Function},
+		{name: initEventArrayeners, class: Function},
+		{name: mouseDownLeft, class: Function},
+		{name: mouseClickLeft, class: Function},
+		{name: mouseDownRight, class: Function},
+		{name: mouseClickRight, class: Function},
+		{name: wantsDropOf, class: Function, return: Boolean},
+		{name: droppedImage, class: Function, return null},
+		{name: droppedSVG, class: Function, return null},
+		
+		{name: nextTab, class: Function, parameters: {
+															{name: editField, class: Node}
+														}
+		},
+		{name: previousTab, class: Function, parameters: {
+																{name: editField, class: Node}
+														    }
+		},
+		
+		{name: contextMenu, class: Function, return: MenuMorph},
+		{name: userCreateMorph, class: Function},
+		{name: toggleDevMode, class: Function},
+		{name: hideAll, class: Function},
+		{name: showAllHiddens, class: Function},
+		{name: about, class: Function},
+		{name: edit, class: Function, parameters: {
+														{name: aStringOrTextMorph, class: {String, TextMorph}}
+													 }
+		},
+		{name: slide, class: Function, parameters: {
+														{name: aStringOrTextMorph, class: {String, TextMorph}}
+													  }
+		
+		},
+		{name: stopEditing, class: Function},
+		{name: toggleBlurredShadows, class: Function},
+		{name: togglePreferences, class: Function},
+	}
+}!*/
+
+/* \WorldMorph */
