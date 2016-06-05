@@ -4,77 +4,97 @@
 
 /* List */
 
-/*@
-{
+/*@{
 	var,
-	name : List,
-	class : Function,
-	return : List,
-	parameters : 
-	{
-		{name : array, class : Array, type : Joker}
+	name: List,
+	class: Function,
+	return: List,
+	parameters: {
+		{name: array, class: Array, type: Joker}
 	}
-}
-!*/
+}!*/
 
-/*@
-{
-	name : List,
-	class : Object,
-	properties :
-	{
-		{name : contents, class : {{class : Array, type : Joker}} },
-		{name : first, class : Joker},
-		{name : rest, class : Joker},
-		{name : isLinked, class : Boolean},
-		{name : lastChanged, class : Number},
+/*@{
+	name: List,
+	class: Object,
+	properties: {
+		{name: contents, class: {{class: Array, type: Joker}} },
+		{name: first, class: Joker},
+		{name: rest, class: Joker},
+		{name: isLinked, class: Boolean},
+		{name: lastChanged, class: Number},
 		
-		{name : toString, class : Function, return : String},
-		{name : changed, class : Function},
-		{name : cons, class : Function, return : List, parameters : {
-																		{name : car, class : Joker},
-																		{name : cdr, class : List}
-																	}
+		{name: enableTables, class: Boolean},
+		
+		{name: toString, class: Function, return: String},
+		{name: changed, class: Function},
+		{name: cons, class: Function, return: List, parameters: {
+																	{name: car, class: Joker},
+																	{name: cdr, class: List}
+																}
 		},
-		{name : cdr, class : Function, return : List},
+		{name: cdr, class: Function, return: List},
 		
-		{name : add, class : Function, parameters : {
-														{name : element, class : Joker},
-														{name : index, class : Number}
+		{name: add, class: Function, parameters: {
+													{name: element, class: Joker},
+													{name: index, class: Number}
+												 }
+		},
+		{name: put, class: Function, parameters: {
+													{name: element, class: Joker},
+													{name: index, class: Number}
+												 }
+		},
+		{name: remove, class: Function, parameters: {
+														{name: index, class: Number}
 													}
 		},
-		{name : put, class : Function, parameters : {
-														{name : element, class : Joker},
-														{name : index, class : Number}
-													}
+		{name: clear, class: Function},
+		{name: length, class: Function, return: Number},
+		{name: at, class: Function, return: Joker, parameters: {
+																{name: index, class: Number}
+															   }
 		},
-		{name : remove, class : Function, parameters : {
-															{name : index, class : Number}
-													   }
+		{name: contains, class: Function, return: Boolean, parameters: {
+																		{name: element, class: Joker}
+																	   }
 		},
-		{name : clear, class : Function},
 		
-		{name : length, class : Function, return : Number},
-		{name : at, class : Function, return : Joker, parameters : {
-																		{name : index, class : Number}
+		{name: isTable, class: Function, return: Boolean},
+		{name: get, class: Function, return: {{class: Array, type: Number}, {class: Array, type: List}, Number, String, Variable},
+		 parameters: {
+						{name: col, class: Number},
+						{name: row, class: Number}
+					 }
+		},
+		{name: rows, class: Function, return: Number},
+		{name: cols, class: Function, return: Number},
+		{name: colName, class: Function, return: String, parameters: {
+																		{name: col, class: Number}
+																	 }
+		},
+		{name: rowName, class: Function, return: String, parameters: {
+																		{name: row, class: Number}
+																	 }
+		},
+		{name: columnNames, class: Function, return: {{class: Array, type: String}} },
+		{name: version, class: Function, return: Date, parameters: {
+																	{name: startRow, class: Number},
+																	{name: rows, class: Number},
 																   }
 		},
-		{name : contains, class : Function, return : Boolean, parameters : {
-																				{name : element, class : Joker}
-																		   }
-		},
-		{name : asArray, class : Function, return : {{class : Array, type : Joker}} },
-		{name : asText, class : Function, return : String},
-		{name : becomeArray, class : Function},
-		{name : becomeLinked, class : Function},
 		
-		{name : equalTo, class : Function, return : Boolean, parameters : {
-																			{name : other, class : List}
-																		  }
+		{name: asArray, class: Function, return: {{class: Array, type: Joker}} },
+		{name: itemsArray, class: Function, return: {{class: Array, type: Joker}} },
+		{name: asText, class: Function, return: String},
+		{name: becomeArray, class: Function},
+		{name: becomeLinked, class: Function},
+		{name: equalTo, class: Function, return: Boolean, parameters: {
+																		{name: other, class: List}
+																	  }
 		}
 	}
-}
-!*/
+}!*/
 
 /* \List */
 
@@ -82,70 +102,73 @@
 
 /* ListWatcherMorph */
 
-/*@
-{
+/*@{
 	var,
-	name : ListWatcherMorph,
-	class : Function,
-	return : ListWatcherMorph,
-	parameters : 
-	{
-		{name : list, class : List},
-		{name : parentCell, class : CellMorph}
+	name: ListWatcherMorph,
+	class: Function,
+	return: ListWatcherMorph,
+	parameters: {
+		{name: list, class: List},
+		{name: parentCell, class: CellMorph}
 	}
-}
-!*/
+}!*/
 
-/*@
-{
-	name : ListWatcherMorph,
-	class : BoxMorph,
-	properties :
-	{
-		{name : parent, class : CellMorph},
+/*@{
+	name: ListWatcherMorph,
+	class: BoxMorph,
+	properties: {
+		{name: parent, class: CellMorph},
+		{name: parentThatIsAnyOf, class: Function, return: {SpriteBubbleMorph, SpeechBubbleMorph, CellMorph} },
 		
-		{name : constructor, class : Function, return : ListWatcherMorph},
-		{name : uber, class : BoxMorph},
-		{name : init, class : Function, parameters : {
-														{name : list, class : List},
-														{name : parentCell, class : CellMorph}
-													 }
+		{name: constructor, class: Function, return: ListWatcherMorph},
+		{name: uber, class: BoxMorph},
+		
+		{name: init, class: Function, parameters: {
+													{name: list, class: List},
+													{name: parentCell, class: CellMorph}
+												  }
 		},
 		
-		{name : cellColor, class : Color},
+		{name: cellColor, class: Color},
+		{name: list, class: List},
+		{name: start, class: Number},
+		{name: range, class: Number},
+		{name: lastUpdated, class: Number},
+		{name: lastCell, class: Joker},
+		{name: parentCell, class: CellMorph},
+		{name: label, class: StringMorph},
+		{name: frame, class: ScrollFrameMorph},
+		{name: handle, class: HandleMorph},
+		{name: arrow, class: ArrowMorph},
+		{name: plusButton, class: PushButtonMorph},
 		
-		{name : list, class : List},
-		{name : start, class : Number},
-		{name : range, class : Number},
-		{name : lastUpdated, class : Number},
-		{name : lastCell, class : Joker},
-		{name : parentCell, class : CellMorph},
-		{name : label, class : StringMorph},
-		{name : frame, class : ScrollFrameMorph},
-		{name : handle, class : HandleMorph},
-		{name : arrow, class : ArrowMorph},
-		{name : plusButton, class : PushButtonMorph},
-		
-		{name : update, class : Function, parameters : {
-															{name : anyway, class : Boolean}
-													   }
+		{name: update, class: Function, parameters: {
+														{name: anyway, class: Boolean}
+													}
 		},
-		{name : updateLength, class : Function, parameters : {
-																{name : notDone, class : Boolean}
-															 }
+		{name: updateLength, class: Function, parameters: {
+															{name: notDone, class: Boolean}
+														  }
 		},
-		{name : startIndexMenu, class : Function},
-		{name : setStartIndex, class : Function, parameters : {
-																{name : index, class : Number}
+		{name: startIndexMenu, class: Function},
+		{name: setStartIndex, class: Function, parameters: {
+															{name: index, class: Number}
+														   }
+		},
+		{name: fixLayout, class: Function},
+		{name: arrangeCells, class: Function},
+		{name: expand, class: Function, parameters: {
+														{name: maxExtent, class: Point}
+													}
+		},
+		{name: showTableView, class: Function},
+		{name: mouseDoubleClick, class: Function, parameters: {
+																{name: pos, class: Point}
 															  }
 		},
-		{name : fixLayout, class : Function},
-		{name : arrangeCells, class : Function},
-		{name : show, class : Function},
-		{name : drawNew, class : Function}
+		{name: show, class: Function},
+		{name: drawNew, class: Function}
 	}
-}
-!*/
+}!*/
 
 /* \ListWatcherMorph */
-

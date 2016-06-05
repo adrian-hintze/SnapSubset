@@ -2,9 +2,7 @@
 /******JAVASCRIPT******/
 /**********************/
 
-
 /*@ {passthrough} !*/
-
 
 /***** functions */
 
@@ -318,64 +316,61 @@
 }
 !*/
 
-/*@
-{
-	name : HTMLCanvasElement,
-	class : HTMLElement,
-	properties :
-	{
-		{name : height, class : Number},
-		{name : width, class : Number},
-		{name : getContext, class : Function, return : CanvasRenderingContext2D}
+/*@{
+	name: HTMLCanvasElement,
+	class: HTMLElement,
+	properties: {
+		{name: height, class: Number},
+		{name: width, class: Number},
+		{name: getContext, class: Function, return: CanvasRenderingContext2D}
 	}
-}
-!*/
+}!*/
 
 /**** \HTMLCanvasElement */
 
 /**** CanvasRenderingContext2D */
 
-/*@
-{
-	name : CanvasRenderingContext2D,
-	class : Object,
-	properties : 
-	{
-		{name : measureText, class : Function, return : TextMetrics},
-		{name : drawImage, class : Function},
-		{name : fillText, class : Function},
-		{name : fillRect, class : Function},
-		{name : createLinearGradient, class : Function, return : CanvasGradient},
-		{name : fillStyle, class : {String, CanvasGradient, CanvasPattern} },
-		{name : beginPath, class : Function},
-		{name : closePath, class : Function},
-		{name : fill, class : Function},
-		{name : lineWidth, class : Number},
-		{name : strokeStyle, class : {String, CanvasGradient, CanvasPattern} },
-		{name : lineCap, class : String},
-		{name : lineJoin, class : String},
-		{name : moveTo, class : Function},
-		{name : lineTo, class : Function},
-		{name : stroke, class : Function},
-		{name : createRadialGradient, class : Function, return : CanvasGradient},
-		{name : arc, class : Function},
-		{name : shadowOffsetY, class : Number},
-		{name : shadowOffsetX, class : Number},
-		{name : shadowBlur, class : Number},
-		{name : shadowColor, class : String},
-		{name : globalCompositeOperation, class : String},
-		{name : clearRect, class : Function},
-		{name : translate, class : Function},
-		{name : scale, class : Function},
-		{name : getImageData, class : Function, return : ImageData},
-		{name : putImageData, class : Function},
-		{name : createImageData, class : Function, return : ImageData},
-		{name : save, class : Function},
-		{name : restore, class : Function},
-		{name : rotate, class : Function}
+/*@{
+	name: CanvasRenderingContext2D,
+	class: Object,
+	properties: {
+		{name: measureText, class: Function, return: TextMetrics},
+		{name: drawImage, class: Function},
+		{name: fillText, class: Function},
+		{name: fillRect, class: Function},
+		{name: createLinearGradient, class: Function, return: CanvasGradient},
+		{name: fillStyle, class: {String, CanvasGradient, CanvasPattern} },
+		{name: beginPath, class: Function},
+		{name: closePath, class: Function},
+		{name: fill, class: Function},
+		{name: lineWidth, class: Number},
+		{name: strokeStyle, class: {String, CanvasGradient, CanvasPattern} },
+		{name: lineCap, class: String},
+		{name: lineJoin, class: String},
+		{name: moveTo, class: Function},
+		{name: lineTo, class: Function},
+		{name: stroke, class: Function},
+		{name: createRadialGradient, class: Function, return: CanvasGradient},
+		{name: arc, class: Function},
+		{name: shadowOffsetY, class: Number},
+		{name: shadowOffsetX, class: Number},
+		{name: shadowBlur, class: Number},
+		{name: shadowColor, class: String},
+		{name: globalCompositeOperation, class: String},
+		{name: clearRect, class: Function},
+		{name: translate, class: Function},
+		{name: scale, class: Function},
+		{name: getImageData, class: Function, return: ImageData},
+		{name: putImageData, class: Function},
+		{name: createImageData, class: Function, return: ImageData},
+		{name: save, class: Function},
+		{name: restore, class: Function},
+		{name: rotate, class: Function},
+		{name: font, class: String},
+		{name: textAlign, class: String},
+		{name: textBaseline, class: String}
 	}
-}
-!*/
+}!*/
 
 /**** \CanvasRenderingContext2D */
 
@@ -610,21 +605,22 @@
 
 /*@
 {
-	name : String,
-	class : Object,
-	properties :
-	{
-		{name : length, class : Number},
-		{name : slice, class : Function, return : String},
-		{name : concat, class : Function, return : String},
-		{name : trim, class : Function, return : String},
-		{name : replace, class : Function, return : String},
-		{name : split, class : Function, return : {{class : Array, type : String}} },
-		{name : [], class : String},
-		{name : indexOf, class : Function, return : Number},
-		{name : fromCharCode, class : Function, return : String},
-		{name : toLowerCase, class : Function, return : String},
-		{name : toUpperCase, class : Function, return : String}
+	name: String,
+	class: Object,
+	properties: {
+		{name: length, class: Number},
+		{name: slice, class: Function, return: String},
+		{name: concat, class: Function, return: String},
+		{name: trim, class: Function, return: String},
+		{name: replace, class: Function, return: String},
+		{name: split, class: Function, return: {{class: Array, type: String}} },
+		{name: [], class: String},
+		{name: indexOf, class: Function, return: Number},
+		{name: fromCharCode, class: Function, return: String},
+		{name: toLowerCase, class: Function, return: String},
+		{name: toUpperCase, class: Function, return: String},
+		{name: fromCharCode, class: Function, return: String},
+		{name: repeat, class: Function, return: String}
 	}
 } 
 !*/
