@@ -558,8 +558,11 @@
 																							{name: border, class: Number}
 																					   }
 		},
-		{name: getHighlight, class: Function, return: SpriteHighlightMorph}
-		
+		{name: getHighlight, class: Function, return: SpriteHighlightMorph},
+		{name: inheritedVariableNames, class: Function, return: {{class: Array, type: String}}, parameters: {
+																												{name: shadowedOnly, class: Boolean}
+																											}
+		}
 	}
 }!*/
 
@@ -803,7 +806,8 @@
 		{name: receiveUserInteraction, class: Function, return: {{class: Array, type: Process}}, parameters: {
 																												{name: interaction, class: String}
 																											 }
-		}
+		},
+		{name: inheritedVariableNames, class: Function, return: {{class: Array, type: Joker}}}
 	}
 }!*/
 
