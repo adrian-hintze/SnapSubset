@@ -1,3 +1,12 @@
+**Project deprecated**
+Constant new versions of ECMAScript and Snap! and a lack of time keep me from working at this project.
+Also this was designed back in a time when I still was lacking some skills to build mantainable code which only makes matters worse.
+
+This project would need a full rewrite.
+
+That being said thinking about and implementing this project was a lot of fun and maybe one day I'll revisit this project as a generalistic ECMAScript subset generator.
+
+
 # SnapSubset
 
 SnapSubset allows the user to easily create a functional program that consists of a subset of Snap*!*.
