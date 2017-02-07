@@ -1,5 +1,5 @@
 # Project deprecated
-Constant new versions of ECMAScript and Snap!, and a lack of time, keep me from working on this project.
+Constant new versions of ECMAScript and Snap!, and lack of time, keep me from working on this project.
 
 After so much time without being mantained and a lot of new technologies and ideas that have come up since it's inception, this project would benefit from a full rewrite.
 
