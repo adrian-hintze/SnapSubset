@@ -1,6 +1,5 @@
 # Project deprecated
 Constant new versions of ECMAScript and Snap!, and a lack of time, keep me from working on this project.
-Also this was designed back in a time when I still was lacking some skills to build mantainable code which only makes matters worse.
 
 This project would need a full rewrite.
 
