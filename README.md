@@ -1,9 +1,9 @@
 # Project deprecated
 Constant new versions of ECMAScript and Snap!, and a lack of time, keep me from working on this project.
 
-This project would need a full rewrite.
+After so much time without being mantained and a lot of new technologies and ideas that have come up since it's inception, this project would benefit from a full rewrite.
 
-That being said thinking about and implementing this project was a lot of fun and maybe one day I'll revisit this project as a generalistic ECMAScript subset generator.
+That being said, thinking about and implementing this project was a lot of fun and maybe one day I'll revisit it as a generalistic ECMAScript subset generator.
 
 
 # SnapSubset
